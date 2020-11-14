@@ -1,0 +1,422 @@
+// Variable Overrides
+$body-bg: #FFFFFF;
+
+$theme-colors: (
+    "primary": #284fdd
+);
+.container-fluid  {
+  padding-right:0!important;
+  padding-left:0!important;
+  margin-right:auto!important;
+  margin-left:auto !important;
+}
+
+.card-link {
+  color: rgba(96,96,96, 1) !important;
+}
+
+.card-link:hover {
+  color: #284fdd !important;
+  font-weight: bold;
+}
+.jumbotron {
+    // background-color: white !important;
+    background: rgb(0,0,0);
+    // opacity: 0.3;
+    background-image: url(../image/darkHome.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 95vh;
+    border-top: 3px solid rgb(219,219,219);
+    // filter: grayscale(40%);
+    // background-size: 100%;
+}
+.dropdown:hover > .dropdown-menu{
+    display: block !important;
+    // transition: 2s ease-out!important;
+    // -webkit-transition: opacity 2s ease-in !important;
+    // -moz-transition: opacity 2s ease-in !important;
+    // -o-transition: opacity 2s ease-in !important;
+    // transition: opacity 2s ease-in !important;
+    animation-name: slidenavAnimation !important;
+    animation-duration:.2s !important;
+    animation-iteration-count: 1 !important;
+    animation-timing-function: ease !important;
+    animation-fill-mode: forwards !important;
+  
+    -webkit-animation-name: slidenavAnimation !important;
+    -webkit-animation-duration:.2s !important;
+    -webkit-animation-iteration-count: 1 !important;
+    -webkit-animation-timing-function: ease !important;
+    -webkit-animation-fill-mode: forwards !important;
+  
+    -moz-animation-name: slidenavAnimation !important;
+    -moz-animation-duration:.2s !important;
+    -moz-animation-iteration-count: 1 !important;
+    -moz-animation-timing-function: ease !important;
+    -moz-animation-fill-mode: forwards !important;
+    visibility: visible;
+}
+
+@keyframes slidenavAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes slidenavAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.dropdown-item:hover {
+  color: #4C4C4C !important;
+
+}
+.dropdown-menu:hover> .dropdown-menu {
+  display:block !important;
+  // visibility: visible;
+}
+// .dropdown {
+//   visibility: hidden;
+//   transition: 0.2s 1s !important;
+
+// }
+
+.dropdown {
+  position: static !important;
+}
+
+.dropdown-menu { 
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15)!important; 
+  margin-top:-1px !important; 
+  width:100% !important; 
+  background-color: rgba(96,96,96, 1) !important;
+  // background-color: #4C4C4C !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  // transition-delay: 2s !important;
+  // transition: all 2s ease 3s;
+  visibility: hidden;
+  transition: .2s 1s !important;
+}
+.dropdown-item {
+  color: white !important;
+  font-weight: 100 !important;
+  padding-top: 1% !important;
+  padding-bottom: 1% !important;
+}
+
+.h3 {
+    letter-spacing: 1px !important;
+    font-size: 16pt !important;
+    line-height: 20pt !important;
+}
+.no-gutter{
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.navbar-toggler {
+    border-style: none !important;
+}
+body {
+    overflow-x: hidden;
+}
+
+.carousel-control-prev-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+  z-index: 5 !important;
+ }
+ 
+ .carousel-control-next-icon {
+   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+   z-index: 5 !important;
+
+  }
+
+ .carousel-indicators li {
+  width: 5px !important;
+  height: 5px !important;
+  border-radius: 100% !important;
+  background-color: #4C4C4C !important;
+}
+
+// #second-pg {
+//   min-height: 100vh;
+// }
+#second-pg img {
+  width: 70%;
+}
+
+#product-img {
+  max-width: 55%;
+}
+
+#product-img:hover{
+  filter: brightness(1.5);
+  // background-blend-mode: multiply;
+  transition: 2s;
+}
+
+// #aboutUs {
+//   top: 50% !important;
+// }
+
+.btn-outline-primary {
+  border-radius: 15px !important;
+  border-width: 2px !important;
+}
+.btn-primary {
+  border-radius: 5px !important;
+  border-width: 2px !important;
+}
+#explore-products {
+  border-radius: 0px 5px 5px 0px;
+}
+.m-0 {
+  margin:0 !important;
+}
+// #company-image {
+//      background-image: url(../image/DSC00417.JPG)
+// }
+
+// .dropdown-menu {
+//   width: 100vw !important;
+
+// }
+::placeholder {
+  color: #E3E3E8 !important;
+  font-weight: 100 !important;
+
+}
+input:focus::placeholder {
+  color: transparent !important;
+}
+@media (min-width: 576px){
+  #korea {
+    max-width: 50%;
+    z-index: 5;
+    float: right;
+    position: relative;
+    right: 0px;
+    top:0px;
+  }
+
+}
+
+// @media (max-width: 768px) {
+//   #productSlide {
+//     max-width: 50vh;
+//     max-width: 50vh;
+//   }
+// }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+    // .bd-placeholder-img-lg {
+    //   font-size: 3.5rem;
+    // }
+    #main-header{
+        top: 20%
+    }
+    .display-3 {
+      font-size: 9vh !important;
+    }
+    .display-4 {
+      font-size: 5.5vh !important;
+      color: #284fdd !important;
+    }
+    #second-pg-h3 {
+      font-size: 2.2vh !important;
+    }
+    .jumbo-sub {
+      font-size: 2.4vh !important;
+    }
+    #korea {
+      max-width: 60%;
+      z-index: 5;
+      right: -20px;
+      top:-40px;
+      position: absolute;
+    }
+    #america {
+      max-width: 100%;
+      z-index: 5;
+      float: left;
+      position: absolute;
+      left: -30px;
+      bottom:-20px;
+    }
+    #korea-america {
+      min-height: 100vh;
+    }
+  }
+// Large devices (desktops, 992px and up)
+  @media (min-width: 992px) {
+    #main-header{
+        top: 50%
+    }
+    #aboutUs {
+      margin-top:35%;
+    }
+    #korea {
+      max-width: 48%;
+      z-index: 5;
+      float: right;
+      position: absolute;
+      right: -20px;
+      top:-40px;
+    }
+    #america {
+      max-width: 80%;
+      z-index: 5;
+      float: left;
+      position: absolute;
+      left: -30px;
+      bottom:-20px;
+    }
+    
+  }
+  // Extra small devices (portrait phones, less than 576px)
+  @media (max-width: 576px) {
+    #main-header{
+        top: 20%
+    }
+    .display-3 {
+      font-size: 8vh !important;
+    }
+    .display-4 {
+      font-size: 5vh !important;
+      color: #284fdd !important;
+    }
+    #second-pg-h3 {
+      font-size: 2.2vh !important;
+    }
+    .jumbo-sub {
+      font-size: 2.2vh !important;
+    }
+    #korea {
+      max-width: 40%;
+      z-index: 5;
+      float: right;
+      position: absolute;
+      right: -20px;
+      top:-30px;
+    }
+    #america {
+      max-width: 65%;
+      z-index: 5;
+      float: left;
+      position: absolute;
+      left: -30px;
+      top:-20px;
+    }
+    #aboutUs {
+      margin-top:50%;
+      // bottom: 0px;
+      // float: left;
+      // left: 15%;
+    }
+    #korea-america {
+      height: 50vh;
+    }
+
+  }
+//   between small and med devices
+  @media (min-width: 576px) and (max-width: 768px) {
+    #main-header{
+        top: 20%
+    }
+    .display-3 {
+      font-size: 8vh !important;
+    }
+    .display-4 {
+      font-size: 5vh !important;
+      color: #284fdd !important;
+    }
+    #second-pg-h3 {
+      font-size: 2.2vh !important;
+    }
+    #korea {
+      max-width: 35%;
+      z-index: 5;
+      float: right;
+      position: absolute;
+      right: -20px;
+      top:-40px;
+    }
+    #america {
+      max-width: 55%;
+      z-index: 5;
+      float: left;
+      position: absolute;
+      left: -20px;
+      top:-20px;
+    }
+
+    #aboutUs {
+      margin-top:35%;
+      margin-left: -10% !important;
+      bottom: -2px;
+      
+    }
+
+    #korea-america {
+      height: 50vh;
+    }
+
+  }
+//   between med and large devices
+  @media (min-width: 768px) and (max-width: 992px){
+    #main-header{
+        top: 30%
+    }
+    #korea {
+      max-width: 40%;
+      z-index: 5;
+      float: right;
+      position: absolute;
+      right: -20px;
+      top:-40px;
+    }
+    #america {
+      max-width: 65%;
+      z-index: 5;
+      float: left;
+      position: absolute;
+      left: -15px;
+      bottom:-15px;
+    }
+    .wrapper {
+      overflow: hidden;
+    }
+
+    #aboutUs {
+      margin-top:10%;
+      // top: 40%;
+    }
+
+  }
+
+// .jumbotron {
+//     height: 100vh;
+// }
+// Bootstrap Sass Imports
+@import "node_modules/bootstrap/scss/bootstrap";
+

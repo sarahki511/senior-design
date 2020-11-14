@@ -1,0 +1,119 @@
+{%extends "base.html"%}
+
+{% block title %}Home{%endblock%}
+
+{%block body%}
+    <body>
+        <div class = "container-fluid">
+            <div class = "jumbotron no-gutters" id = "company-img">
+                <div class = "container-fluid position-absolute col-lg-8" id = "main-header">
+                    <div class = "text-left text-light">
+                        <h1 class = "display-3"><strong>Cleaning your Water<br> One Drop at a Time</strong></h1>
+                        <p class="h3 jumbo-sub">Engineering consultant, equipment manufacturer, a system integrator, distributor and manufacturer's representative in water treatment since 1994.</p>
+                        <a class = "pl-0 text-light btn btn-link btn-md" href="aboutUs.html">Learn more about us</a>
+                    </div>  
+                </div>
+            </div>
+            <div class = "container-fluid pb-4" id = "second-pg">
+                <div class = "row h-100 justify-content-center align-self-center min-vh-100">
+                    <div class = "col-fluid col-sm-12 col-md-6 m-auto">
+                        <div class = "mx-md-5 text-left text-dark px-3">
+                            <h1 class = "display-4 my-5">Designing your custom solution through technical consultation.</h1>
+                            <p class = "h3 my-5" id = "second-pg-h3">Our technical team will develop site-specific solutions with through reviews and discussions.<br>
+                            <br>We strive to ensure all project goals are achieved including the end user satisfaction.</p>
+                            <a class = "btn btn-outline-primary btn-md px-4 my-1" href = "contact.html">CONTACT US</a>
+                        </div>
+                    </div>
+                    <div class = "col-flulid mb-sm-4 mt-sm-5 col-sm-12 col-md-6 align-self-center d-flex justify-content-center order-md-first">
+
+                        <img src="static/image/secondPgPic.svg" class="img-fluid" alt = "Responsive image")>
+                    </div>
+                </div>
+            </div>
+            <div class = "container-fluid min-vh-100 my-auto" id = "products-home">
+                <div class = "row h-100 justify-content-start mx-auto">
+                    <h1 class = "pl-5 pr-4 py-2 text-white bg-dark" id = "explore-products">Explore our Products</h1>
+                </div>
+                <div class = "row align-middle justify-content-around pt-4 mx-3">
+                    <div class = "col-md-4 col-sm-12 mx-auto no-gutters">
+                        <div class = "card-block text-center py-5">
+                            <a href="cmuf.html" id = "products">
+                                <img src="static/image/cmuf.png" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
+                            </a>
+                            <div class="card-body text-center">
+                                <a class = "card-link" href="cmuf.html">Flat Sheet Ceramic Membrane Ultra Filtration</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "col-md-4 col-sm-12 mx-auto no-gutters">
+                        <div class = "card-block text-center py-5">
+                            <a href="#">
+                                <img src="static/image/sbr.svg" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
+                            </a>
+                            <div class="card-body text-center">
+                                <a class = "card-link" href="#">Sequencing Batch Reactor</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "col-md-4 col-sm-12 mx-auto no-gutters">
+                        <div class = "card-block text-center py-5">
+                            <a href="mbbr.html">
+                                <img src="static/image/MBBR.png" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
+                            </a>
+                            <div class="card-body text-center">
+                                <a class = "card-link" href="mbbr.html">Moving Bed Biofilm Reactor</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class = "row align-middle justify-content-center pb-3 mx-3">
+                    <div class = "col-md-4 col-sm-12 mx-auto no-gutters">
+                        <div class = "card-block text-center py-5">
+                            <a href="microB.html">
+                                <img src="static/image/microB-icon.png" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
+                            </a>
+                            <div class="card-body text-center">
+                                <a class = "card-link" href="microB.html">Microbubble Membrane Diffuser</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "col-md-4 col-sm-12 mx-auto no-gutters">
+                        <div class = "card-block text-center py-5">
+                            <a href="biochip.html">
+                                <img src="static/image/biochip-icon.png" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
+                            </a>
+                            <div class="card-body text-center">
+                                <a class = "card-link" href="biochip.html">Mutag Biochip 30<sup>TM</sup></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "col-md-4 col-sm-12 mx-auto no-gutters">
+                        <div class = "card-block text-center py-5">
+                            <a href="biochip.html">
+                                <img src="static/image/bio.png" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
+                            </a>
+                            <div class="card-body text-center">
+                                <a class = "card-link" href="biochip.html">Bioaugmentation</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                
+            </div>
+            <div class = "container-fluid border">
+                <div class = "row bg-white pt-3 mx-0">
+                    <div class = "col-fluid ml-2">
+                        <p class = "text-dark">&copy 2020 DK International. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/popper.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+    </body>
+{% endblock %}
