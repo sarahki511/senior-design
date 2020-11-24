@@ -8,13 +8,13 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
         <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{url_for('static', filename = 'css/bootstrap.css')}}">
-        <link rel="stylesheet" href="{{url_for('static', filename ='css/styles.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename ='scss/styles.css')}}">
     </head>
     <body>
         <div class = "container-fluid">
             <nav class = "navbar navbar-expand-md navbar-light bg-white no-gutters">
-                <a class="navbar-brand" href="index.html">
-                    <img src="static/image/Asset11.svg" width = "30" height = "30" class = "d-inline-block align-top mx-1" alt = "")>
+                <a class="navbar-brand" href="{{ url_for('home') }}">
+                    <img src="static/image/dna.jpg" width = "30" height = "30" class = "d-inline-block align-top mx-1" alt = "")>
                     TEAM 30 STORYBOARD
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
@@ -22,38 +22,21 @@
                 </button>
                 <div class="collapse navbar-collapse" id = "navbarSupportedContent">
                     <ul class="navbar-nav ml-auto m-2">
-                        <!-- <li class = "nav-item mx-3">
-                            <a class = "nav-link" href="index.html"style="border-bottom-style: solid; border-color: #284fdd; color: #303033">Home</a>
-                        </li>
-                        <li class = "nav-item mx-3">
-                            <a class = "nav-link" href="#">About</a>
-                        </li> -->
-                        <li class = "nav-item mx-3">
-                            <a class = "nav-link" href="#">CONSULT</a>
-                        </li>
-                        <li class = "nav-item mx-3">
-                            <a class = "nav-link" href="#">RESPECT</a>
-                        </li>
-                        <li class = "nav-item mx-3">
-                            <a class = "nav-link" href="#">APPLES</a>
-                        </li>
-                        <li class = "nav-item mx-3">
-                            <a class = "nav-link" href="#">MISA</a>
-                        </li>
-                        <!-- <li class = "nav-item dropdown mx-3">
-                            <a class = "nav-link dropdown-toggle" id = "navbarDropdown" data-toggle="dropdown" href="#">Products</a>
-                            <div class = "dropdown-menu">
-                                <a class="dropdown-item" href="#">Bioaugmentation</a>
-                                <a class="dropdown-item" href="#">Flat Sheet Ceramic Membrane Ultra Filtration</a>
-                                <a class="dropdown-item" href="#">Moving Bed Biofilm Reactor</a>
-                                <a class="dropdown-item" href="#">Microbubble Membrane Diffuser</a>
-                                <a class="dropdown-item" href="#">Mutag Biochip 30<sup>TM</sup></a>
-                                <a class="dropdown-item" href="#">Sequencing Batch Reactor</a>
-                            </div>
-                        </li> -->
-                        <!-- <li class = "nav-item mx-3">
-                            <a class = "nav-link" href="contact.html">Contact</a>
-                        </li> -->
+                        {% set navbar_menus = [
+                            ('/', 'home', 'HOME'),
+                            ('/consult', 'consult', 'CONSULT'),
+                            ('/respect', 'respect', 'RESPECT'),
+                            ('/apples', 'apples', 'APPLES'),
+                            ('/misa', 'misa', 'MISA'),
+                            ] -%}
+                        {% set active_page = active_page|default('home') -%}
+                        {% for href, id, caption in navbar_menus %}
+                                <li class = "nav-item mx-3">
+                                    <a class="nav-link {% if id == active_page %} active {% endif%}" href="{{ href }}">
+                                        {{ caption }}
+                                    </a>
+                                 </li>
+                        {% endfor %}
                     </ul>
                 </div>
             </nav>

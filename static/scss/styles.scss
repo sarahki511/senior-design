@@ -1,5 +1,7 @@
 // Variable Overrides
 $body-bg: #FFFFFF;
+// $body-bg: #b66a6a;
+
 
 $theme-colors: (
     "primary": #284fdd
@@ -10,6 +12,12 @@ $theme-colors: (
   margin-right:auto!important;
   margin-left:auto !important;
 }
+.min-vh-50 {
+  min-height: 50vh !important;
+}
+.max-vh-55 {
+  max-height: 55vh !important;
+}
 
 .card-link {
   color: rgba(96,96,96, 1) !important;
@@ -19,20 +27,20 @@ $theme-colors: (
   color: #284fdd !important;
   font-weight: bold;
 }
-.jumbotron {
-    // background-color: white !important;
-    background: rgb(0,0,0);
-    // opacity: 0.3;
-    background-image: url(../image/darkHome.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed;
-    min-height: 95vh;
-    border-top: 3px solid rgb(219,219,219);
-    // filter: grayscale(40%);
-    // background-size: 100%;
+
+.active {
+  border-bottom-style: solid;
+  border-color: #284fdd;
+  color: #303033;
 }
+// .jumbotron {
+//   background-color: white;
+//   background-position: center;
+//   background-size: cover;
+//   background-attachment: fixed;
+//   min-height: 50vh !important;
+//   border-top: 3px solid #dbdbdb; }
+
 .dropdown:hover > .dropdown-menu{
     display: block !important;
     // transition: 2s ease-out!important;
@@ -157,11 +165,9 @@ body {
   background-color: #4C4C4C !important;
 }
 
-// #second-pg {
-//   min-height: 100vh;
-// }
+
 #second-pg img {
-  width: 70%;
+  width: 50%;
 }
 
 #product-img {
@@ -188,18 +194,13 @@ body {
 }
 #explore-products {
   border-radius: 0px 5px 5px 0px;
+  background-color: #595959 !important;
+  font-weight: normal;
 }
 .m-0 {
   margin:0 !important;
 }
-// #company-image {
-//      background-image: url(../image/DSC00417.JPG)
-// }
 
-// .dropdown-menu {
-//   width: 100vw !important;
-
-// }
 ::placeholder {
   color: #E3E3E8 !important;
   font-weight: 100 !important;
@@ -220,21 +221,8 @@ input:focus::placeholder {
 
 }
 
-// @media (max-width: 768px) {
-//   #productSlide {
-//     max-width: 50vh;
-//     max-width: 50vh;
-//   }
-// }
-
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
-    // .bd-placeholder-img-lg {
-    //   font-size: 3.5rem;
-    // }
-    #main-header{
-        top: 20%
-    }
     .display-3 {
       font-size: 9vh !important;
     }
@@ -248,56 +236,13 @@ input:focus::placeholder {
     .jumbo-sub {
       font-size: 2.4vh !important;
     }
-    #korea {
-      max-width: 60%;
-      z-index: 5;
-      right: -20px;
-      top:-40px;
-      position: absolute;
-    }
-    #america {
-      max-width: 100%;
-      z-index: 5;
-      float: left;
-      position: absolute;
-      left: -30px;
-      bottom:-20px;
-    }
-    #korea-america {
-      min-height: 100vh;
-    }
   }
 // Large devices (desktops, 992px and up)
   @media (min-width: 992px) {
-    #main-header{
-        top: 50%
-    }
-    #aboutUs {
-      margin-top:35%;
-    }
-    #korea {
-      max-width: 48%;
-      z-index: 5;
-      float: right;
-      position: absolute;
-      right: -20px;
-      top:-40px;
-    }
-    #america {
-      max-width: 80%;
-      z-index: 5;
-      float: left;
-      position: absolute;
-      left: -30px;
-      bottom:-20px;
-    }
     
   }
   // Extra small devices (portrait phones, less than 576px)
   @media (max-width: 576px) {
-    #main-header{
-        top: 20%
-    }
     .display-3 {
       font-size: 8vh !important;
     }
@@ -311,38 +256,9 @@ input:focus::placeholder {
     .jumbo-sub {
       font-size: 2.2vh !important;
     }
-    #korea {
-      max-width: 40%;
-      z-index: 5;
-      float: right;
-      position: absolute;
-      right: -20px;
-      top:-30px;
-    }
-    #america {
-      max-width: 65%;
-      z-index: 5;
-      float: left;
-      position: absolute;
-      left: -30px;
-      top:-20px;
-    }
-    #aboutUs {
-      margin-top:50%;
-      // bottom: 0px;
-      // float: left;
-      // left: 15%;
-    }
-    #korea-america {
-      height: 50vh;
-    }
-
   }
 //   between small and med devices
   @media (min-width: 576px) and (max-width: 768px) {
-    #main-header{
-        top: 20%
-    }
     .display-3 {
       font-size: 8vh !important;
     }
@@ -353,56 +269,10 @@ input:focus::placeholder {
     #second-pg-h3 {
       font-size: 2.2vh !important;
     }
-    #korea {
-      max-width: 35%;
-      z-index: 5;
-      float: right;
-      position: absolute;
-      right: -20px;
-      top:-40px;
-    }
-    #america {
-      max-width: 55%;
-      z-index: 5;
-      float: left;
-      position: absolute;
-      left: -20px;
-      top:-20px;
-    }
-
-    #aboutUs {
-      margin-top:35%;
-      margin-left: -10% !important;
-      bottom: -2px;
-      
-    }
-
-    #korea-america {
-      height: 50vh;
-    }
 
   }
 //   between med and large devices
   @media (min-width: 768px) and (max-width: 992px){
-    #main-header{
-        top: 30%
-    }
-    #korea {
-      max-width: 40%;
-      z-index: 5;
-      float: right;
-      position: absolute;
-      right: -20px;
-      top:-40px;
-    }
-    #america {
-      max-width: 65%;
-      z-index: 5;
-      float: left;
-      position: absolute;
-      left: -15px;
-      bottom:-15px;
-    }
     .wrapper {
       overflow: hidden;
     }

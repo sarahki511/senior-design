@@ -1,113 +1,157 @@
 {%extends "base.html"%}
-
+{% set active_page = id %}
 {% block title %}Home{%endblock%}
 
 {%block body%}
     <body>
         <div class = "container-fluid">
-            <div class = "jumbotron no-gutters" id = "company-img">
-                <div class = "container-fluid position-absolute col-lg-8" id = "main-header">
-                    <div class = "text-left text-light">
-                        <h1 class = "display-3"><strong>Cleaning your Water<br> One Drop at a Time</strong></h1>
-                        <p class="h3 jumbo-sub">Engineering consultant, equipment manufacturer, a system integrator, distributor and manufacturer's representative in water treatment since 1994.</p>
-                        <a class = "pl-0 text-light btn btn-link btn-md" href="aboutUs.html">Learn more about us</a>
+            <div class = "jumbotron jumbotron-fluid no-gutters justify-content-center my-0" style="min-height: 30vh !important;">
+                <div class = "container my-auto">
+                    <div class = "text-left text-dark">
+                        <h1 class = "display-3">AI-Powered EcoGenomics</h1>
+                        <p class="h3 jumbo-sub">Assess Biodiversity</p>
+                        <a class = "pl-0 text-dark btn btn-link btn-md" href="aboutUs.html">Learn more about us</a>
                     </div>  
                 </div>
             </div>
-            <div class = "container-fluid pb-4" id = "second-pg">
-                <div class = "row h-100 justify-content-center align-self-center min-vh-100">
-                    <div class = "col-fluid col-sm-12 col-md-6 m-auto">
+            <div class = "container-fluid min-vh-50 py-3 my-auto" id = "second-pg">
+                <div class = "row my-auto pt-3 pb-4 justify-content-center align-self-center">
+                    <div class = "col-fluid col-sm-12 col-md-7 align-self-center">
                         <div class = "mx-md-5 text-left text-dark px-3">
-                            <h1 class = "display-4 my-5">Designing your custom solution through technical consultation.</h1>
-                            <p class = "h3 my-5" id = "second-pg-h3">Our technical team will develop site-specific solutions with through reviews and discussions.<br>
-                            <br>We strive to ensure all project goals are achieved including the end user satisfaction.</p>
-                            <a class = "btn btn-outline-primary btn-md px-4 my-1" href = "contact.html">CONTACT US</a>
+                            <h1 class = "display-4 my-5">Comprehensive EcoGenomics Analysis</h1>
+                            <p class = "h3 my-5" id = "second-pg-h3">Run through CONSULT, RESPECT, MISA, and APPLES<br><br>Upload to filter, skim, and predict your reads.</p>
+                            <a class = "btn btn-outline-primary btn-md px-4 my-1" href = "#">UPLOAD READS</a>
                         </div>
                     </div>
-                    <div class = "col-flulid mb-sm-4 mt-sm-5 col-sm-12 col-md-6 align-self-center d-flex justify-content-center order-md-first">
+                    <div class = "col-flulid mb-sm-4 mt-sm-5 col-sm-12 col-md-5 align-content-center d-flex justify-content-center order-md-first">
 
                         <img src="static/image/secondPgPic.svg" class="img-fluid" alt = "Responsive image")>
                     </div>
                 </div>
             </div>
-            <div class = "container-fluid min-vh-100 my-auto" id = "products-home">
+            <div class = "container-fluid my-auto" id = "products-home">
                 <div class = "row h-100 justify-content-start mx-auto">
-                    <h1 class = "pl-5 pr-4 py-2 text-white bg-dark" id = "explore-products">Explore our Products</h1>
+                    <h1 class = "pl-5 pr-5 py-2 text-white" id = "explore-products">Explore our Tools</h1>
                 </div>
+                
                 <div class = "row align-middle justify-content-around pt-4 mx-3">
-                    <div class = "col-md-4 col-sm-12 mx-auto no-gutters">
+                    <div class = "col-md-5 col-sm-12 mx-auto no-gutters">
+                        <div class = "card-block text-center py-5">
+                            <a href="{{url_for('consult')}}" id = "products">
+                                <img src="static/image/cmuf.png" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
+                            </a>
+                            <!-- <div class="card-body text-center">
+                                <a class = "card-link" href="#">CONSULT</a>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class = "col-md-5 col-sm-12 d-flex align-items-center mx-auto no-gutters">
+                        <div class = "container text-center py-5">
+                            <p class = "display-4 mt-5">CONSULT</p>
+                            <p class = "h5 mb-5">Clean the genome skim by filtering extraneous reads</p>
+                        </div>
+                    </div>
+                    <div class = "col-md-5 col-sm-12 d-flex align-items-center mx-auto no-gutters">
+                        <div class = "container text-center py-5">
+                            <p class = "display-4 mt-5">RESPECT</p>
+                            <p class = "h5 mb-5">Estimate the basic genomic parameters</p>
+                        </div>
+                    </div>
+                    <div class = "col-md-5 col-sm-12  mx-auto no-gutters">
+                        <div class = "card-block  text-center py-5">
+                            <a href="{{ url_for('respect') }}" id = "products">
+                                <img src="static/image/microB-icon.png" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
+                            </a>
+                            <!-- <div class="card-body text-center">
+                                <a class = "card-link" href="#">RESPECT</a>
+                            </div> -->
+                        </div>
+                    </div>
+                    
+                        <div class = "col-md-5 col-sm-12 mx-auto no-gutters">
+                            <div class = "card-block text-center py-5">
+                                <a href="{{ url_for('apples') }}" id = "products">
+                                    <img src="static/image/sbr.svg" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
+                                </a>
+                                <!-- <div class="card-body text-center">
+                                    <a class = "card-link" href="#">APPLES</a>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class = "col-md-5 col-sm-12 d-flex align-items-center mx-auto no-gutters">
+                            <div class = "container text-center py-5">
+                                <p class = "display-4 mt-5">APPLES</p>
+                                <p class = "h5 mb-5">Phylogenetically place reads without reference sequences</p>
+                            </div>
+                        </div>
+
+                        <div class = "col-md-5 col-sm-12 d-flex align-items-center mx-auto no-gutters">
+                            <div class = "container text-center py-5">
+                                <p class = "display-4 mt-5">MISA</p>
+                                <p class = "h5 mb-5">Calculate distance deconvolution and phylogenetic multi-placement</p>
+                            </div>
+                        </div>
+                        <div class = "col-md-5 col-sm-12  mx-auto no-gutters">
+                            <div class = "card-block  text-center py-5">
+                                <a href="{{ url_for('misa') }}" id = "products">
+                                    <img src="static/image/biochip-icon.png" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
+                                </a>
+                                <!-- <div class="card-body text-center">
+                                    <a class = "card-link" href="#">MISA</a>
+                                </div> -->
+                            </div>
+                        </div>
+                <!-- the  bottom code is a different way of showing all the tools -->
+                <!-- <div class = "row align-middle justify-content-around pt-4 mx-3">
+                    <div class = "col-md-3 col-sm-12 mx-auto no-gutters">
                         <div class = "card-block text-center py-5">
                             <a href="cmuf.html" id = "products">
                                 <img src="static/image/cmuf.png" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
                             </a>
                             <div class="card-body text-center">
-                                <a class = "card-link" href="cmuf.html">Flat Sheet Ceramic Membrane Ultra Filtration</a>
+                                <a class = "card-link" href="cmuf.html">CONSULT</a>
                             </div>
                         </div>
                     </div>
-                    <div class = "col-md-4 col-sm-12 mx-auto no-gutters">
+                    <div class = "col-md-3 col-sm-12 mx-auto no-gutters">
                         <div class = "card-block text-center py-5">
                             <a href="#">
                                 <img src="static/image/sbr.svg" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
                             </a>
                             <div class="card-body text-center">
-                                <a class = "card-link" href="#">Sequencing Batch Reactor</a>
+                                <a class = "card-link" href="#">RESPECT</a>
                             </div>
                         </div>
                     </div>
-                    <div class = "col-md-4 col-sm-12 mx-auto no-gutters">
+                    <div class = "col-md-3 col-sm-12 mx-auto no-gutters">
                         <div class = "card-block text-center py-5">
                             <a href="mbbr.html">
                                 <img src="static/image/MBBR.png" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
                             </a>
                             <div class="card-body text-center">
-                                <a class = "card-link" href="mbbr.html">Moving Bed Biofilm Reactor</a>
+                                <a class = "card-link" href="mbbr.html">APPLES</a>
                             </div>
                         </div>
                     </div>
-
-
-                </div>
-                <div class = "row align-middle justify-content-center pb-3 mx-3">
-                    <div class = "col-md-4 col-sm-12 mx-auto no-gutters">
+                    <div class = "col-md-3 col-sm-12 mx-auto no-gutters">
                         <div class = "card-block text-center py-5">
-                            <a href="microB.html">
-                                <img src="static/image/microB-icon.png" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
+                            <a href="mbbr.html">
+                                <img src="static/image/MBBR.png" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
                             </a>
                             <div class="card-body text-center">
-                                <a class = "card-link" href="microB.html">Microbubble Membrane Diffuser</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class = "col-md-4 col-sm-12 mx-auto no-gutters">
-                        <div class = "card-block text-center py-5">
-                            <a href="biochip.html">
-                                <img src="static/image/biochip-icon.png" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
-                            </a>
-                            <div class="card-body text-center">
-                                <a class = "card-link" href="biochip.html">Mutag Biochip 30<sup>TM</sup></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class = "col-md-4 col-sm-12 mx-auto no-gutters">
-                        <div class = "card-block text-center py-5">
-                            <a href="biochip.html">
-                                <img src="static/image/bio.png" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
-                            </a>
-                            <div class="card-body text-center">
-                                <a class = "card-link" href="biochip.html">Bioaugmentation</a>
+                                <a class = "card-link" href="mbbr.html">MISA</a>
                             </div>
                         </div>
                     </div>
 
+                </div> -->
 
-                </div>
                 
             </div>
             <div class = "container-fluid border">
                 <div class = "row bg-white pt-3 mx-0">
                     <div class = "col-fluid ml-2">
-                        <p class = "text-dark">&copy 2020 DK International. All rights reserved.</p>
+                        <p class = "text-dark">&copy 2020 ??. All rights reserved.</p>
                     </div>
                 </div>
             </div>
