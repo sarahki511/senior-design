@@ -13,6 +13,36 @@
                     </div>  
                 </div>
             </div>
+            <div class = "container d-flex align-center justify-content-center py-5">
+                <form method = "POST" action = "{{ url_for(id) }}" enctype="multipart/form-data">
+                    <div class = "row">
+                        <div class="form-group">
+                            <label for="inputSeq">Upload Read File</label>
+                            <!-- <input type="file" class="form-control-file" id="inputSeq"> -->
+                            {{form.sequenceFile}}
+                        </div>
+                    </div>
+                    <div class = "row">
+                        <div class="form-group">
+                            {{ form.name.label}}
+                            {{   form.name}}
+                        </div>
+                    </div>
+                    <div class = "row">
+                        <div class="form-group">
+                            {{ form.email.label}}
+                            {{   form.email}}
+                        </div>
+                    </div>
+                    <div class = "row">
+                        {{form.submit}}
+                        <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+                    </div>
+                    </div>
+                    
+                </form>
+                {%block form%}{%endblock%}
+            </div>
             <div class = "container d-flex justify-content-center py-5">
                 <button type="submit" class="btn btn-outline-primary  btn-md justify-self-center align-self-center px-5" 
              style = "font-weight: 100; border-radius: 5px !important; letter-spacing: 3px; font-size: small;">{%block button%}{%endblock%}</button>
