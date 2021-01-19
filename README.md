@@ -1,2 +1,2 @@
 # senior-design
-##AI-Powered EcoGenomics
+## AI-Powered EcoGenomics
