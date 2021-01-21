@@ -1,13 +1,13 @@
 from flask import Flask, redirect, url_for, render_template, flash
-from forms import inputForm
+from app import forms
 from werkzeug.utils import secure_filename
 import os
-import subprocess
+from app import app
 # import locAL3 as lc3
 # import xAndyPlot as xyPlot
 
 
-app = Flask(__name__)
+# app = Flask(__name__)
 app.config['SECRET_KEY'] = '\xd8\xf1\xa5\xdd\x8eD\xf7\xdf]\xe7\x05\xf79\xa3\x0e\xd1'
 uploads_dir = os.path.join(app.instance_path, 'uploads')
 os.makedirs(uploads_dir, exist_ok=True)
@@ -44,7 +44,7 @@ def pending():
     return render_template("pending.html", title = "PENDING", id = "pending")
 
 def getForm(currentPg):
-    form = inputForm()
+    form = forms.inputForm()
     htmlLink = currentPg + ".html"
     if form.validate_on_submit():
         # folderDir = os.path.join(os.path.dirname(app.instance_path), 'static','assets' )
@@ -55,5 +55,5 @@ def getForm(currentPg):
         return redirect("pending.html")
     return render_template(htmlLink, title = currentPg.upper(), id = currentPg, form = form)
 
-if __name__ == "__main__":
-    app.run(debug=True)
+# if __name__ == "__main__":
+#     app.run(debug=True)
