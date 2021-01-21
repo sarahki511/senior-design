@@ -1,13 +1,13 @@
-from flask import Flask, redirect, url_for, render_template, flash
+from flask import Flask, redirect, url_for, render_template
 from app import forms
 from werkzeug.utils import secure_filename
 import os
 from app import app
+from flask.helpers import flash
 # import locAL3 as lc3
 # import xAndyPlot as xyPlot
 
 
-# app = Flask(__name__)
 app.config['SECRET_KEY'] = '\xd8\xf1\xa5\xdd\x8eD\xf7\xdf]\xe7\x05\xf79\xa3\x0e\xd1'
 uploads_dir = os.path.join(app.instance_path, 'uploads')
 os.makedirs(uploads_dir, exist_ok=True)
