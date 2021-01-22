@@ -14,29 +14,31 @@
                 </div>
             </div>
             <div class = "container d-flex align-center justify-content-center py-5">
-                <form method = "POST" action = "{{ url_for(id) }}" enctype="multipart/form-data">
-                    <div class = "row">
+                <form class = "needs-validation" novalidate method = "POST" action = "/pending" enctype="multipart/form-data">
+                    <div class = "form-row">
                         <div class="form-group">
                             <label for="inputSeq">Upload Read File</label>
-                            <!-- <input type="file" class="form-control-file" id="inputSeq"> -->
-                            {{form.sequenceFile}}
+                            <input type="file" class="form-control-file" id="inputSeq">
                         </div>
                     </div>
-                    <div class = "row">
+                    <div class = "form-row">
                         <div class="form-group">
-                            {{ form.name.label}}
-                            {{   form.name}}
+                            <label for="validationCustom01">First name</label>
+                            <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="Mark" required>
+                            <div class="valid-feedback">
+                              Looks good!
+                            </div>
                         </div>
                     </div>
-                    <div class = "row">
+                    <div class = "form-row">
                         <div class="form-group">
-                            {{ form.email.label}}
-                            {{   form.email}}
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
                     </div>
-                    <div class = "row">
-                        {{form.submit}}
-                        <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+                    <div class = "form-row">
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                     </div>
                     
