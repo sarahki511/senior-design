@@ -14,16 +14,16 @@
                 </div>
             </div>
             <div class = "container d-flex align-center justify-content-center py-5">
-                <form class = "needs-validation" novalidate method = "POST" action = "/pending" enctype="multipart/form-data">
+                <form class = "needs-validation" novalidate method = "POST" action = "/consult" enctype="multipart/form-data">
                     <div class = "form-row">
                         <div class="form-group">
-                            <label for="inputSeq">Upload Read File</label>
-                            <input type="file" class="form-control-file" id="inputSeq">
+                            <label for="file">Upload Read File</label>
+                            <input type = "file" name = "file"  id = "file" class = "inputFile form-control-file"/>
                         </div>
                     </div>
                     <div class = "form-row">
                         <div class="form-group">
-                            <label for="validationCustom01">First name</label>
+                            <label for="validationCustom01">Name</label>
                             <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="Mark" required>
                             <div class="valid-feedback">
                               Looks good!
@@ -32,8 +32,8 @@
                     </div>
                     <div class = "form-row">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                            <label for="userEmail">Email address</label>
+                            <input type="email" name = "userEmail" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email">
                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
                     </div>
