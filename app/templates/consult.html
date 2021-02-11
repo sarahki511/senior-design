@@ -5,6 +5,37 @@ often mixed with a supposedly single-species genome skim and are compounded by s
 Use this tool to remove such contamination by filtering extraneous reads.
 {%endblock%}
 
+{%block form%}
+    <form class = "needs-validation" novalidate method = "POST" action = "/consult" enctype="multipart/form-data">
+        <div class = "form-row">
+            <div class="form-group">
+                <label for="file">Upload Read File</label>
+                <input type = "file" name = "file"  id = "file" class = "inputFile form-control-file"/>
+            </div>
+        </div>
+        <div class = "form-row">
+            <div class="form-group">
+                <label for="getUserName">Name</label>
+                <input type="text" name = "getUserName" class="form-control" id="getUserName" placeholder="Sam Smith" required>
+                <div class="valid-feedback">
+                Looks good!
+                </div>
+            </div>
+        </div>
+        <div class = "form-row">
+            <div class="form-group">
+                <label for="userEmail">Email address</label>
+                <input type="email" name = "userEmail" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+        </div>
+        <div class = "form-row">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>                                
+    </form>
+{%endblock%}
+
+
 {%block button%}
 Input Reads for Contamination Removal
 {%endblock%}
