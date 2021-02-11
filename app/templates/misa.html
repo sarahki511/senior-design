@@ -5,6 +5,16 @@ The MISA tool will allow you to analyze mixed samples of multiple species that a
  and it will output two placements on the reference phylogeny- one per contributing genome. 
 {%endblock%}
 
+{%block uploads%}
+<script>document.getElementById('form-param').setAttribute('action', '/misa')</script>
+<div class = "form-row">
+    <div class="form-group">
+        <label for="file">Upload Read File</label>
+        <input type = "file" name = "file"  id = "file" class = "inputFile form-control-file"/>
+    </div>
+</div>
+{%endblock%}
+
 {%block button%}
 Upload Mixed Sample Genome Skim
 {%endblock%}

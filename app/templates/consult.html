@@ -5,6 +5,18 @@ often mixed with a supposedly single-species genome skim and are compounded by s
 Use this tool to remove such contamination by filtering extraneous reads.
 {%endblock%}
 
+
+{%block uploads%}
+<script>document.getElementById('form-param').setAttribute('action', '/cosult')</script>
+<div class = "form-row">
+    <div class="form-group">
+        <label for="file">Upload Read File</label>
+        <input type = "file" name = "file"  id = "file" class = "inputFile form-control-file"/>
+    </div>
+</div>
+{%endblock%}
+
+
 {%block button%}
 Input Reads for Contamination Removal
 {%endblock%}

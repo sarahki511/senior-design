@@ -14,13 +14,9 @@
                 </div>
             </div>
             <div class = "container d-flex align-center justify-content-center py-5">
-                <form class = "needs-validation" novalidate method = "POST" action = "/consult" enctype="multipart/form-data">
-                    <div class = "form-row">
-                        <div class="form-group">
-                            <label for="file">Upload Read File</label>
-                            <input type = "file" name = "file"  id = "file" class = "inputFile form-control-file"/>
-                        </div>
-                    </div>
+                
+                <form class = "needs-validation" id="form-param" novalidate method = "POST" enctype="multipart/form-data">
+                    {%block uploads%}{%endblock%}
                     <div class = "form-row">
                         <div class="form-group">
                             <label for="getUserName">Name</label>
