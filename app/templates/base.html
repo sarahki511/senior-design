@@ -5,29 +5,32 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
+        <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet"> -->
+        <link rel="stylesheet" href="https://use.typekit.net/uch7mmr.css">
         <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{url_for('static', filename = 'css/bootstrap.css')}}">
         <link rel="stylesheet" href="{{url_for('static', filename ='scss/styles.css')}}">
     </head>
     <body>
         <div class = "container-fluid">
-            <nav class = "navbar navbar-expand-md navbar-light bg-white no-gutters">
+            <nav class = "navbar navbar-expand-md navbar-dark custom-bg no-gutters">
                 <a class="navbar-brand" href="{{ url_for('home') }}">
-                    <img src="static/image/dna.jpg" width = "30" height = "30" class = "d-inline-block align-top mx-1" alt = "")>
+                    <!-- <img src="static/image/dna.jpg" width = "30" height = "30" class = "d-inline-block align-top mx-1" alt = "")> -->
                     Skmer
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
                     <span class="navbar-toggler-icon "></span>
                 </button>
                 <div class="collapse navbar-collapse" id = "navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto m-2">
+                    <ul class="navbar-nav ml-auto m-0">
                         {% set navbar_menus = [
                             ('/', 'home', 'Home'),
+                            ('#', 'flow', 'Flow Diagram'),
                             ('/consult', 'consult', 'CONSULT'),
                             ('/respect', 'respect', 'RESPECT'),
                             ('/apples', 'apples', 'APPLES'),
                             ('/misa', 'misa', 'MISA'),
+                            ('#', 'contact', 'Contact Us')
                             ] -%}
                         {% set active_page = active_page|default('home') -%}
                         {% for href, id, caption in navbar_menus %}

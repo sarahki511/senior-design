@@ -17,4 +17,5 @@ def sendEmail(timestamp, email):
             body = f'sent!'
             msg = f'Subject: {subject}\n\n{body}'
             smtp.sendmail(sendAddress, email, msg)
+            smtp.close()
             print('email sent')

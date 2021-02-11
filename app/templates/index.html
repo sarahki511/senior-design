@@ -5,17 +5,33 @@
 {%block body%}
     <body>
         <div class = "container-fluid">
-            <div class = "jumbotron jumbotron-fluid no-gutters justify-content-center my-0" style="min-height: 30vh !important;">
-                <div class = "container my-auto">
+            <div class = "jumbotron jumbotron-fluid no-gutters d-flex align-items-center my-0" style="min-height: 45vh !important;">
+                <div class = "container ml-2 my-auto">
                     <div class = "text-left text-dark">
-                        <h1 class = "display-3">AI-Powered EcoGenomics</h1>
-                        <p class="h3 jumbo-sub">Assess Biodiversity</p>
-                        <a class = "pl-0 text-dark btn btn-link btn-md" href="aboutUs.html">Learn more about us</a>
+                        <h6 class = "jumbo-title">What is Skmer</h6>
+                        <p class="my-4 py-2 jumbo-sub">Assembly-free and alignment-free sample identification using genome skims</p>
+                        <p class = "jumbo-desc">We introduce an assembly-free and alignment-free tool, Skmer, to compute genomic distances between the query and reference<br> genome skims. Skmer shows excellent accuracy in estimating distances and identifying the closest match in reference datasets.</p>
+                        <a class = "pl-0 jumbo-desc btn btn-link btn-md" href="#">Learn more (download PDF)</a>
                     </div>  
                 </div>
             </div>
-            <div class = "container-fluid min-vh-50 py-3 my-auto" id = "second-pg">
-                <div class = "row my-auto pt-3 pb-4 justify-content-center align-self-center">
+            <div class = "container-fluid min-vh-50 d-flex justify-content-center" id = "second-pg">
+                <div class = "row-fluid">
+                    <div class = "app-title py-5 my-auto text-center text-dark">
+                        <span class = "px-auto"style="display:inline-flex;">
+                            Applications
+                        </span>
+                        <div class = "mx-auto px-0" style="display:inline-lex !important;" width = fit-content; height = fit-content; >
+                            <img src = "static/image/i-icon.svg" width = "15" height = "15"/>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class = "row-fluid h-100 border">
+
+                </div>
+                
+                <!-- <div class = "row my-auto pt-3 pb-4 justify-content-center align-self-center">
                     <div class = "col-fluid col-sm-12 col-md-7 align-self-center">
                         <div class = "mx-md-5 text-left text-dark px-3">
                             <h1 class = "display-4 my-5">Comprehensive EcoGenomics Analysis</h1>
@@ -25,9 +41,9 @@
                     </div>
                     <div class = "col-flulid mb-sm-4 mt-sm-5 col-sm-12 col-md-5 align-content-center d-flex justify-content-center order-md-first">
 
-                        <img src="static/image/secondPgPic.svg" class="img-fluid" alt = "Responsive image")>
+                        <img src="static/image/square.jpg" class="img-fluid" alt = "Responsive image")>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class = "container-fluid my-auto" id = "products-home">
                 <div class = "row h-100 justify-content-start mx-auto">
@@ -38,7 +54,7 @@
                     <div class = "col-md-5 col-sm-12 mx-auto no-gutters">
                         <div class = "card-block text-center py-5">
                             <a href="{{url_for('consult')}}" id = "products">
-                                <img src="static/image/cmuf.png" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
+                                <img src="static/image/circle.png" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
                             </a>
                             <!-- <div class="card-body text-center">
                                 <a class = "card-link" href="#">CONSULT</a>
@@ -60,7 +76,7 @@
                     <div class = "col-md-5 col-sm-12  mx-auto no-gutters">
                         <div class = "card-block  text-center py-5">
                             <a href="{{ url_for('respect') }}" id = "products">
-                                <img src="static/image/microB-icon.png" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
+                                <img src="static/image/circle.png" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
                             </a>
                             <!-- <div class="card-body text-center">
                                 <a class = "card-link" href="#">RESPECT</a>
@@ -71,7 +87,7 @@
                         <div class = "col-md-5 col-sm-12 mx-auto no-gutters">
                             <div class = "card-block text-center py-5">
                                 <a href="{{ url_for('apples') }}" id = "products">
-                                    <img src="static/image/sbr.svg" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
+                                    <img src="static/image/circle.png" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
                                 </a>
                                 <!-- <div class="card-body text-center">
                                     <a class = "card-link" href="#">APPLES</a>
@@ -94,7 +110,7 @@
                         <div class = "col-md-5 col-sm-12  mx-auto no-gutters">
                             <div class = "card-block  text-center py-5">
                                 <a href="{{ url_for('misa') }}" id = "products">
-                                    <img src="static/image/biochip-icon.png" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
+                                    <img src="static/image/circle.png" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
                                 </a>
                             </div>
                         </div>

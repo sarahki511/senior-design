@@ -37,6 +37,7 @@ def consult():
             uploaded = os.path.join(app.config['IMAGE_UPLOADS'], timestamp)
             file.save(uploaded)
             email = request.form.get('userEmail')
+            name = request.form.get('getUserName')
             tools.sendEmail(timestamp, email)
             return redirect(url_for('pending'))
             # return uploaded_file(filename)
@@ -46,7 +47,25 @@ def consult():
 # upload and run code for respect
 @app.route("/respect", methods=('GET', 'POST')) 
 def respect():
-    # return getForm("respect")
+    if request.method == 'POST':
+        # if file does not exist in request.files
+        if 'file' not in request.files:
+            print("is it here?")
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        # if no uploaded file
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        if file and allowedFile(file.filename):
+            timestamp = datetime.now().strftime('%Y-%m-%d_%H%M%S')
+            filename = secure_filename(file.filename)
+            uploaded = os.path.join(app.config['IMAGE_UPLOADS'], timestamp)
+            file.save(uploaded)
+            email = request.form.get('userEmail')
+            tools.sendEmail(timestamp, email)
+            return redirect(url_for('pending'))
     return render_template("respect.html", title = "RESPECT", id = "respect")
     
 
