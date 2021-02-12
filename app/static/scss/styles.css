@@ -7,6 +7,11 @@
   color: #DDD3C3 !important;
 }
 
+#arrow:hover {
+  -webkit-filter: brightness(5);
+          filter: brightness(5);
+}
+
 .navbar-dark .navbar-nav .show > .nav-link,
 .navbar-dark .navbar-nav .active > .nav-link,
 .navbar-dark .navbar-nav .nav-link.show,
@@ -63,6 +68,14 @@
   color: #DDD3C3 !important;
 }
 
+.app:after {
+  border-bottom: 1px solid #4a4951;
+  content: '';
+  display: block;
+  margin-left: 48%;
+  width: 3%;
+}
+
 .btn {
   font-family: "acumin-pro",sans-serif !important;
   font-size: small !important;
@@ -109,11 +122,22 @@
 }
 
 .card-link {
-  color: #606060 !important;
+  color: #292831 !important;
+  text-shadow: 1px 1px #98989c;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.card-text {
+  color: #4a4951 !important;
+  font-family: "acumin-pro",sans-serif !important;
+  font-weight:  400 !important;
+  font-style:  normal !important;
+  font-size: x-small;
 }
 
 .card-link:hover {
-  color: #222b29 !important;
+  color: rgba(255, 252, 247, 0.75) !important;
   font-weight: bold;
 }
 
@@ -253,14 +277,17 @@ body {
 }
 
 #product-img {
-  max-width: 55%;
+  max-width: 75%;
+  -webkit-transition: all 1s ease-out;
+  transition: all 1s ease-out;
 }
 
 #product-img:hover {
-  -webkit-filter: brightness(1.5);
-          filter: brightness(1.5);
-  -webkit-transition: 2s;
-  transition: 2s;
+  -webkit-filter: brightness(1.25);
+          filter: brightness(1.25);
+  -webkit-transition: brightness(1.25) 1s ease-out;
+  -webkit-transition: all 1s ease-out;
+  transition: all 1s ease-out;
 }
 
 .btn-outline-primary {
@@ -274,9 +301,12 @@ body {
 }
 
 #explore-products {
-  border-radius: 0px 5px 5px 0px;
-  background-color: #595959 !important;
+  border-radius: 7px;
+  background-color: #dbd3c4 !important;
   font-weight: normal;
+  -webkit-box-shadow: 4px 4px #e8e3db;
+          box-shadow: 4px 4px #e8e3db;
+  font-size: small !important;
 }
 
 .m-0 {
