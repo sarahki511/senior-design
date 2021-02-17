@@ -1,0 +1,22 @@
+{%extends "base.html"%}
+{% set active_page = id %}
+{% block title %}{{title}}{%endblock%}
+
+{%block body%} 
+    <body>
+        <div class = "container-fluid">
+            <div class = "jumbotron jumbotron-fluid no-gutters justify-content-center my-0" style="min-height: 30vh !important;">
+                <div class = "container my-auto">
+                    <div class = "text-center text-dark">
+                        <h1 class = "display-3">Ready for Dowload</h1>
+                        <a href={{ url_for('return_files', dirname=name) }} target="blank"><button class='btn btn-default'>Download!</button></a>
+                        <!-- <a href="/return_files/" target="blank"><button class='btn btn-default'>Download!</button></a> -->
+                        
+                        
+                        <p class="h4 jumbo-sub"></p>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </body>
+{%endblock%}
