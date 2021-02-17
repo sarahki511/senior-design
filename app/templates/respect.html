@@ -35,6 +35,29 @@ Given the cleaned  up reads, RESPECT will output the estimated genomic length of
 
 {%block content%}
 {%endblock%}
+
+{%block uploads%}
+<script>document.getElementById('form-param').setAttribute('action', '/respect')</script>
+<div class = "form-row">
+    <div class="form-group">
+        <label for="file">Upload Input Files (single/multiple/directory)</label>
+        <input type="file" webkitdirectory mozdirectory name = "folder" multiple id = "file" class = "inputFile form-control-file"/>
+    </div>
+</div>
+<div class = "form-row">
+    <div class="form-group">
+        <label for="file">Specify Mapping File</label>
+        <input type = "file" name = "mapping-file"  id = "file" class = "inputFile form-control-file"/>
+    </div>
+</div>
+
+<div class = "form-row">
+    <div class="form-group">
+        <label for="file">Specify Histogram Info File</label>
+        <input type = "file" name = "hist-file"  id = "file" class = "inputFile form-control-file"/>
+    </div>
+</div>
+{%endblock%}
 {%block button%}
 Input Cleaned up Reads for Genomic Parameters
 {%endblock%}

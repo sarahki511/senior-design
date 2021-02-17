@@ -1,0 +1,2 @@
+iteration	coverage	genome_length	uniqueness_ratio	error_function
+0	0.65	16640422	1.00	19564.07
