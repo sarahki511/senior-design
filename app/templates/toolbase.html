@@ -1,24 +1,48 @@
 {%extends "base.html"%}
-{% set active_page = id %}
+{% set active_page = "app" %}
+{% set active_tool = id %}
 {% block title %}{{title}}{%endblock%}
 
 {%block body%} 
     <body>
         <div class = "container-fluid">
-            <div class = "jumbotron jumbotron-fluid no-gutters justify-content-center my-0" style="min-height: 30vh !important;">
-                <div class = "container my-auto">
-                    <div class = "text-center text-dark">
-                        <h1 class = "display-4">{{title}}</h1>
-                        <p class="h4 jumbo-sub">{%block desc%}{%endblock%}</p>
-                    </div>  
+            <div class="d-flex ml-3 flex-column">
+                <div class = "d-flex flex-row mt-3 pb-3 align-items-center mr-3" style = "border-bottom: 1px solid #4a4951;">
+                    <div class="pr-2 text-center" id = "inside_tool_title">{{title}}</div>
+                    <div class="px-2 text-center" id = "inside_tool_b_Desc">{%block brief_desc%}{%endblock%}</div>
+                </div>
+                <div class = "d-flex flex-row">
+                    <div class="pr-2 py-2 jumbo-desc" id = "inside_tool_desc" style="font-size: small;">{%block desc%}{%endblock%}</div>
+                </div>
+                <div class = "d-flex flex-row">
+                    <a class = "py-2 px-0 jumbo-desc btn btn-link btn-md" href="#">Learn more (download PDF)</a>
                 </div>
             </div>
-            <div class = "container d-flex align-center justify-content-center py-5">
-                {%block form%}{%endblock%}
-            </div>
-            <div class = "container d-flex justify-content-center py-5">
-                <button type="submit" class="btn btn-outline-primary  btn-md justify-self-center align-self-center px-5" 
-             style = "font-weight: 100; border-radius: 5px !important; letter-spacing: 3px; font-size: small;">{%block button%}{%endblock%}</button>
+            <div class="d-flex m-3 flex-column">
+                    <form class = "px-2 needs-validation" id="form-param" novalidate method = "POST" enctype="multipart/form-data">
+                        {%block uploads%}{%endblock%}
+                        <div class = "form-row">
+                            <div class="form-group">
+                                <label for="getUserName">Name</label>
+                                <input type="text" name = "getUserName" class="form-control" id="getUserName" placeholder="Sam Smith" required>
+                                <div class="valid-feedback">
+                                Looks good!
+                                </div>
+                            </div>
+                        </div>
+                        <div class = "form-row">
+                            <div class="form-group">
+                                <label for="userEmail">Email address</label>
+                                <input type="email" name = "userEmail" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            </div>
+                        </div>
+                        <div class = "form-row">
+                            <button type="submit" class="btn btn-primary text-light">Submit</button>
+                        </div> 
+                        
+                    </form>
+                    <!-- {%block form%}{%endblock%} -->
             </div>
         </div>
     </body>
