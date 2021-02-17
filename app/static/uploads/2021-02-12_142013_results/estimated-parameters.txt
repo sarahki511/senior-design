@@ -1,0 +1,3 @@
+sample	input_type	sequence_type	coverage	genome_length	uniqueness_ratio	HCRM	sequencing_error_rate
+Micromonas_pusilla.hist	histogram	assembly	NA	21690409	0.94	73.60	NA
+GCF_000151265.2_Micromonas_pusilla_CCMP1545_v2.0_genomic.fna	sequence	assembly	NA	21958260	0.94	41.47	NA

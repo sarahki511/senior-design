@@ -7,6 +7,7 @@ app.config['ALLOWED_EXTENSIONS'] = {'txt', 'csv','hist','fa','fq','fastq','fna',
 app.config['EMAIL_ID'] = os.environ.get('EMAIL_ID')
 app.config['EMAIL_PWD'] = os.environ.get('EMAIL_PWD')
 app.config['IMAGE_UPLOADS'] = 'app/static/uploads'
+# app.config['IMAGE_UPLOADS'] = os.path.join(os.getcwd(),'app/static/uploads')
 # app.config['IMAGE_DOWNLOADS'] = 'app/static/uploads'
 
 from app import views
