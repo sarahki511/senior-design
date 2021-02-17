@@ -1,4 +1,0 @@
-sample	input_type	sequence_type	coverage	genome_length	uniqueness_ratio	HCRM	sequencing_error_rate
-mp_fa	sequence	assembly	NA	21958260	0.94	41.47	NA
-mp_ha	histogram	assembly	NA	21690409	0.94	73.60	NA
-mp_hq	histogram	genome-skim	0.58	18823131	1.00	70.52	0.0126

@@ -1,3 +1,0 @@
-Input	read_length
-Micromonas_pusilla.hist	-1
-Micromonas_pusilla_cov_0.5_err_0.01	100

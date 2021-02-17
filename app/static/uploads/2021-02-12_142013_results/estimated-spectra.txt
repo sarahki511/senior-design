@@ -1,3 +1,0 @@
-sample	r1	r2	r3	r4	r5
-Micromonas_pusilla.hist	20427099	216746	54799	19206	32470
-GCF_000151265.2_Micromonas_pusilla_CCMP1545_v2.0_genomic.fna	20645371	188986	39208	13184	28472
