@@ -26,19 +26,37 @@
                         {% set navbar_menus = [
                             ('/', 'home', 'Home'),
                             ('#', 'flow', 'Flow Diagram'),
+                            ('#', 'app', 'App'),
+                            ('#', 'contact', 'Contact Us')
+                            ] -%}
+                        {% set tools = [
                             ('/consult', 'consult', 'CONSULT'),
                             ('/respect', 'respect', 'RESPECT'),
                             ('/apples', 'apples', 'APPLES'),
                             ('/misa', 'misa', 'MISA'),
-                            ('#', 'contact', 'Contact Us')
-                            ] -%}
+                            ]-%}
                         {% set active_page = active_page|default('home') -%}
+                        {% set active_tool = active_tool -%}
+                        
                         {% for href, id, caption in navbar_menus %}
+                            {% if id == "app" %}
+                                <li class = "nav-item dropdown mx-3">
+                                    <a class = "nav-link dropdown-toggle {% if id == active_page %} active {% endif%}" id = "navbarDropdown" data-toggle="dropdown" href="{{ href }}">
+                                        {{ caption }}
+                                    </a>
+                                    <div class = "dropdown-menu">
+                                        {% for t_href, t_id, t_caption in tools %}
+                                            <a class="dropdown-item {% if t_id == active_tool %} active {% endif%}" href="{{ t_href }}">{{ t_caption }}</a>
+                                        {% endfor %}
+                                    </div>
+                                </li>
+                            {% else %}
                                 <li class = "nav-item mx-3">
                                     <a class="nav-link {% if id == active_page %} active {% endif%}" href="{{ href }}">
                                         {{ caption }}
                                     </a>
-                                 </li>
+                                </li>
+                            {% endif %}
                         {% endfor %}
                     </ul>
                 </div>
