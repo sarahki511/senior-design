@@ -80,8 +80,7 @@ def respect():
 				uploaded = os.path.join(app.config['IMAGE_UPLOADS'],timestamp, filename)
 				file.save(uploaded)
 				print(filename)
-				# email = request.form.get('userEmail')
-				# tools.sendEmail(timestamp, email)
+				
 
 	   ## for histogram info file
 		if (hasHist):
@@ -127,7 +126,8 @@ def respect():
 		
 		#runs respect
 		run_respect(c)
-
+		email = request.form.get('userEmail')
+		tools.sendEmail(timestamp, email, output_dir)
 		return render_template("results.html", title = "RESULT", id = "result", name = output_dir)
 		# return redirect(url_for('run_respect', command=c))
 		# return redirect(url_for('pending'))
