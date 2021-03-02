@@ -127,13 +127,25 @@ def respect():
 		#runs respect
 		run_respect(c)
 		email = request.form.get('userEmail')
-		tools.sendEmail(timestamp, email, output_dir)
-		return render_template("results.html", title = "RESULT", id = "result", name = output_dir)
+		getResultdir = timestamp+'_results'
+		tools.sendEmail(timestamp, email, output_dir, getResultdir)
+		
+		# return result(output_dir, getResultdir)
+		return redirect(url_for("result", result_dir = getResultdir))
+		# return render_template("results.html", title = "RESULT", id = "result", name = output_dir)
 		# return redirect(url_for('run_respect', command=c))
 		# return redirect(url_for('pending'))
 		# return redirect(url_for('download_file', name=filename))
 	return render_template("respect.html", title = "RESPECT", id = "respect")
 	# 
+
+@app.route("/result/<result_dir>")
+# def result(output_dir, result_dir):
+def result(result_dir):
+	# link = url_for('result', result_dir=result_dir, _external= True)
+	# tools.sendEmail(timestamp, email, output_dir, result_dir)]
+	output_dir = os.path.join(app.config['IMAGE_UPLOADS'], result_dir)
+	return render_template("results.html", title = "RESULT", id = "result", name = output_dir)
 
 def run_respect(command):
 	# return 'Hello World'

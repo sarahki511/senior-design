@@ -4,8 +4,9 @@ import smtplib, ssl, certifi
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
+from flask import Flask, url_for
 
-def sendEmail(timestamp, email, output_dir):
+def sendEmail(timestamp, email, output_dir, result_dir):
     # get developer's email address and pwd
     sendAddress = app.config['EMAIL_ID']
     sendPwd = app.config['EMAIL_PWD']
@@ -15,7 +16,8 @@ def sendEmail(timestamp, email, output_dir):
     msg['To'] = email
     msg['From'] = sendAddress
     msg['Subject'] = 'Skmer: your results are ready'
-    body = MIMEText('Test results attached.', 'html', 'utf-8')  
+    link = url_for("result",  result_dir=result_dir, _external= True)
+    body = MIMEText("You can see your results in {}".format(link), 'html', 'utf-8')  
     msg.attach(body)  # add message body (text or html)
     
     for f in files:  # add files to the message
