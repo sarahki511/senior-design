@@ -9,14 +9,36 @@ Given the cleaned  up reads, RESPECT will output the estimated genomic length of
 {%endblock%}
 
 {%block content%}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for cat, msg in messages %}
+            <div class="alert alert-{{ cat }}">{{ msg }}</div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <!-- {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+             <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{msg}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            {% endfor %}
+        {% endif %} 
+    {% endwith %}-->
 {%endblock%}
 
 {%block uploads%}
 <script>document.getElementById('form-param').setAttribute('action', '/respect')</script>
 <div class = "form-row">
     <div class="form-group">
-        <label for="file">Upload Input Files (single/multiple/directory)</label>
-        <input type="file" webkitdirectory mozdirectory name = "folder" multiple id = "file" class = "inputFile form-control-file"/>
+        <label for="file">Upload Input Files* (single/multiple/directory)</label>
+        <input type="file" webkitdirectory mozdirectory name = "folder" multiple id = "file" class = "inputFile form-control-file" required/>
+        <div class="invalid-feedback">No selected folder</div>
+
     </div>
 </div>
 <div class = "form-row">
@@ -35,7 +57,7 @@ Given the cleaned  up reads, RESPECT will output the estimated genomic length of
 
 <p class="px-0 mx-0">
     <a class="px-0 mx-0 jumbo-desc btn btn-link btn-md" data-toggle="collapse" href="#extraForm" role="button" aria-expanded="false" aria-controls="extraForm">
-      Advanced Options <i>Optional</i>
+      Optional Advanced Settings
     </a>
 </p>
 <div class="collapse" id="extraForm">
