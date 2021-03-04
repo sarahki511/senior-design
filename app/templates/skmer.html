@@ -1,0 +1,65 @@
+{%extends "toolbase.html"%}
+{%block brief_desc%}
+Compute Pairwise distance
+{%endblock%}
+
+{%block desc%}
+Skmer is a fast tool for estimating distances between genomes from low-coverage sequencing reads (genome-skims), without needing any assembly or alignment step.
+{%endblock%}
+
+{%block content%}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for cat, msg in messages %}
+            <div class="alert alert-{{ cat }}">{{ msg }}</div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <!-- {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+             <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{msg}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            {% endfor %}
+        {% endif %} 
+    {% endwith %}-->
+{%endblock%}
+
+{%block uploads%}
+<script>document.getElementById('form-param').setAttribute('action', '/skmer')</script>
+<div class = "form-row">
+    <div class="form-group">
+        <label for="file">Upload Input Directory of genome-skims or assemblies *</label>
+        <input type="file" webkitdirectory mozdirectory name = "folder" multiple id = "file" class = "inputFile form-control-file" required/>
+        <div class="invalid-feedback">No selected folder</div>
+
+    </div>
+</div>
+
+
+<!-- <div class = "form-row">
+    <div class="form-group">
+        <label for="file">Specify Histogram Info File</label>
+        <input type = "file" name = "hist-file"  id = "file" class = "inputFile form-control-file"/>
+    </div>
+</div> -->
+
+<p class="px-0 mx-0">
+    <a class="px-0 mx-0 jumbo-desc btn btn-link btn-md" data-toggle="collapse" href="#extraForm" role="button" aria-expanded="false" aria-controls="extraForm">
+      Optional Advanced Settings
+    </a>
+</p>
+<div class="collapse" id="extraForm">
+    <div class="card card-body">
+        add form
+    </div>
+</div>
+{%endblock%}
+{%block button%}
+Input Cleaned up Reads for Genomic Parameters
+{%endblock%}
