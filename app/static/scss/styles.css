@@ -7,6 +7,11 @@
   color: #DDD3C3 !important;
 }
 
+.collapse .card {
+  background-color: transparent !important;
+  border: none !important;
+}
+
 #inside_tool_title {
   color: #292831 !important;
   font-size: xx-large;

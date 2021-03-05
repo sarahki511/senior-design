@@ -85,6 +85,7 @@ def respect():
 				if file.filename.rsplit('.',1)[1].lower() == 'hist':
 					hasHist = True
 				filename = secure_filename(file.filename)
+				print(filename)
 				uploaded = os.path.join(input_dir, filename)
 				file.save(uploaded)
 				print(filename)
@@ -130,19 +131,42 @@ def respect():
 			elif m_file.filename != '':
 				flash("Unacceptable extension. Only accept: {}".format(ext + " and .gz version"), 'warning')
 				return redirect(request.url)
-
+		kmer_size = request.form.get('kmer_size')
+		num_iter = request.form.get('iter')
+		if num_iter == '' or 'None':
+			num_iter = "1000"
+		temp = request.form.get('temp')
+		if temp == '' or 'None':
+			temp = "1.0"
+		uniq = request.form.get('uniq')
+		if uniq == '' or 'None':
+			uniq = "0.1"
+		norm = request.form.get('norm')
+		if norm == '' or 'None':
+			norm = "1"
+		spec_num = request.form.get('spec-num')
+		if spec_num == '' or 'None':
+			spec_num = "50"
+		print(num_iter + temp + uniq + norm + spec_num)
 		#passing over to shell command
+		# only for testing data we use -N 10, if it was published, we need to get the input from form
 		if((hasHist == False) and (hasMapping == False)):
-			c = "respect -d {0} -N 10 --debug -o {1}".format(input_dir,output_dir)
+			c = "respect -d {0} -N 10 --debug -o {1}  -k {2} -T {3} -r {4} -l {5} -n {6}".format(input_dir,output_dir,\
+				kmer_size, temp, uniq, norm, spec_num)
 		elif ((hasHist == True) and (hasMapping == False)): 
-			c = "respect -d {0} -I {1} -N 10 --debug -o {2}".format(input_dir,hist_file_path, output_dir)
+			c = "respect -d {0} -I {1} -N 10 --debug -o {2} -k {3} -T {4} -r {5} -l {6} -n {7}".format(input_dir,hist_file_path, output_dir,\
+				kmer_size, temp, uniq, norm, spec_num)
 		elif ((hasHist == False) and (hasMapping == True)): 
-			c = "respect -d {0} -m {1} -N 10 --debug -o {2}".format(input_dir,mapping_file_path, output_dir)
+			c = "respect -d {0} -m {1} -N 10 --debug -o {2} -k {3} -T {4} -r {5} -l {6} -n {7}".format(input_dir,mapping_file_path, output_dir,\
+				kmer_size, temp, uniq, norm, spec_num)
 		else: 
-			c = "respect -d {0} -m {1} -I {2} -N 10 --debug -o {3}".format(input_dir,mapping_file_path, hist_file_path,output_dir)
-		
+			c = "respect -d {0} -m {1} -I {2} -N 10 -k {3} -T {4} -r {5} -l {6} -n {7} --debug -o {8}".format(input_dir,mapping_file_path, \
+				hist_file_path, kmer_size, temp, uniq, norm, spec_num, output_dir)
+		print(c)
+		# return redirect(request.url)
 		#runs respect
 		run_command(c)
+
 		flash("Successfully Uploaded Files! This might take a while. You can safely exit out of this page", "info")
 		# send email when the respect is done running
 		email = request.form.get('userEmail')

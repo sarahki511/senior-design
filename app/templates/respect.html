@@ -54,15 +54,53 @@ Given the cleaned  up reads, RESPECT will output the estimated genomic length of
         <input type = "file" name = "hist-file"  id = "file" class = "inputFile form-control-file"/>
     </div>
 </div>
+<div class = "form-row">
+    <p class="p-0 m-0">
+        <a class="px-0 mx-0 jumbo-desc btn btn-link btn-md" data-toggle="collapse" href="#extraForm" role="button" aria-expanded="false" aria-controls="extraForm">
+            Optional Advanced Settings
+        </a>
+    </p>
+</div>
 
-<p class="px-0 mx-0">
-    <a class="px-0 mx-0 jumbo-desc btn btn-link btn-md" data-toggle="collapse" href="#extraForm" role="button" aria-expanded="false" aria-controls="extraForm">
-      Optional Advanced Settings
-    </a>
-</p>
-<div class="collapse" id="extraForm">
-    <div class="card card-body">
-        add form
+<div class="m-x0 px-0 collapse" id="extraForm">
+    <div class="mx-0 px-0 card card-body">
+        <div class = "form-row">
+            <div class="form-group col-2">
+                <label for="kmer_size">Kmer Size</label>
+                <select id="kmer_size" name = "kmer_size" class="form-control">
+                    {% for x in range(1,32) %}
+                        {% if x == 31 %}
+                            <option value = {{x}} name = "kmer_size"selected>{{x}}</option>
+                        {%else%}
+                            <option value = {{x}} name = "kmer_size">{{x}}</option>
+                        {%endif%}
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group col-2 offset-1">
+                <label for="iter">Number of Iterations</label>
+                <input class="form-control" id = "iter" name = "iter" type="text" placeholder="1000" onkeyup="this.value=this.value.replace(/[^\d]/,'')"/>
+            </div>
+            <div class="form-group col-2 offset-1">
+                <label for="temp">Temperature Coefficient</label>
+                <input class="form-control" id = "temp" name = "temp" type="text" placeholder="1.0" onkeyup="this.value=this.value.replace(/[^\d]/,'')"/>
+            </div>
+           
+        </div>
+        <div class = "form-row">
+            <div class="form-group col-2 ">
+                <label for="uniq">Smallest Permissible uniqueness ratio</label>
+                <input class="form-control" id = "uniq" name = "uniq" type="text" placeholder="0.1" onkeyup="this.value=this.value.replace(/[^\d]/,'')"/>
+            </div>
+            <div class="form-group col-2 offset-1">
+                <label for="norm">Norm</label>
+                <input class="form-control" id = "norm" name = "norm" type="text" placeholder="1" onkeyup="this.value=this.value.replace(/[^\d]/,'')"/>
+            </div>
+            <div class="form-group col-2 offset-1">
+                <label for="spec_num">Spectra Number</label>
+                <input class="form-control" id = "spec_num" name = "spec_num" type="text" placeholder="50" onkeyup="this.value=this.value.replace(/[^\d]/,'')"/>
+            </div>
+        </div>
     </div>
 </div>
 {%endblock%}
