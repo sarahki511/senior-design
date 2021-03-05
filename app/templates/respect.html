@@ -79,26 +79,27 @@ Given the cleaned  up reads, RESPECT will output the estimated genomic length of
             </div>
             <div class="form-group col-2 offset-1">
                 <label for="iter">Number of Iterations</label>
-                <input class="form-control" id = "iter" name = "iter" type="text" placeholder="1000" onkeyup="this.value=this.value.replace(/[^\d]/,'')"/>
+                <input class="form-control" id = "iter" name = "iter" type="text" placeholder="1000" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"/>
             </div>
             <div class="form-group col-2 offset-1">
                 <label for="temp">Temperature Coefficient</label>
-                <input class="form-control" id = "temp" name = "temp" type="text" placeholder="1.0" onkeyup="this.value=this.value.replace(/[^\d]/,'')"/>
+                <input class="form-control" id = "temp" name = "temp" step = "any" type="number" min = "0" placeholder="1.0" onkeypress="return (event.charCode != 45)"/>
+                <!-- <input type= "number" step="any" /> -->
             </div>
            
         </div>
         <div class = "form-row">
             <div class="form-group col-2 ">
                 <label for="uniq">Smallest Permissible uniqueness ratio</label>
-                <input class="form-control" id = "uniq" name = "uniq" type="text" placeholder="0.1" onkeyup="this.value=this.value.replace(/[^\d]/,'')"/>
+                <input class="form-control" id = "uniq" name = "uniq" step = "any" type="number" min = "0" placeholder="0.1" onkeypress="return (event.charCode != 45)"/>
             </div>
             <div class="form-group col-2 offset-1">
                 <label for="norm">Norm</label>
-                <input class="form-control" id = "norm" name = "norm" type="text" placeholder="1" onkeyup="this.value=this.value.replace(/[^\d]/,'')"/>
+                <input class="form-control" id = "norm" name = "norm" step = "any" type="number" min = "0" placeholder="1" onkeypress="return (event.charCode != 45)"/>
             </div>
             <div class="form-group col-2 offset-1">
                 <label for="spec_num">Spectra Number</label>
-                <input class="form-control" id = "spec_num" name = "spec_num" type="text" placeholder="50" onkeyup="this.value=this.value.replace(/[^\d]/,'')"/>
+                <input class="form-control" id = "spec_num" name = "spec_num" min = "0" type="text" placeholder="50" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"/>
             </div>
         </div>
     </div>
