@@ -18,17 +18,9 @@ The MISA tool will allow you to analyze mixed samples of multiple species that a
         <input type = "file" name = "file"  id = "file" class = "inputFile form-control-file"/>
     </div>
 </div>
-<p class="px-0 mx-0">
-    <a class="px-0 mx-0 jumbo-desc btn btn-link btn-md" data-toggle="collapse" href="#extraForm" role="button" aria-expanded="false" aria-controls="extraForm">
-      Advanced Options <i>Optional</i>
-    </a>
-</p>
-<div class="collapse" id="extraForm">
-    <div class="card card-body">
-        add form
-    </div>
-</div>
 {% endblock %}
+{%block optional_form%}
+{%endblock%}
 
 {%block button%}
 Upload Mixed Sample Genome Skim

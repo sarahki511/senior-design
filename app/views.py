@@ -171,7 +171,7 @@ def respect():
 		# send email when the respect is done running
 		email = request.form.get('userEmail')
 		getResultdir = 'respect/'+timestamp+'_results'
-		# tools.sendEmail(timestamp, email, output_dir, getResultdir)
+		tools.sendEmail(timestamp, email, output_dir, getResultdir)
 		
 		return redirect(url_for("result", result_dir = getResultdir))
 

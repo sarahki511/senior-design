@@ -17,7 +17,7 @@ def sendEmail(timestamp, email, output_dir, result_dir):
     msg['From'] = sendAddress
     msg['Subject'] = 'Skmer: your results are ready'
     link = url_for("result",  result_dir=result_dir, _external= True)
-    bodyInfo = "Dear User,\n We have succesfully ran the software.\n You can either visualize your results through this link: {}.\n\
+    bodyInfo = "Dear User, \n We have succesfully ran the software. \n You can either visualize your results through this link: {}. \n \
         We have also attached the results in this email.\n".format(link)
     body = MIMEText(bodyInfo, 'html', 'utf-8')  
     msg.attach(body)  # add message body (text or html)
