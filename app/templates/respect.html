@@ -10,14 +10,14 @@ Given the cleaned  up reads, RESPECT will output the estimated genomic length of
 
 {%block content%}
 
-    {% with messages = get_flashed_messages(with_categories=true) %}
+    <!-- {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
         {% for cat, msg in messages %}
             <div class="alert alert-{{ cat }}">{{ msg }}</div>
         {% endfor %}
     {% endif %}
-    {% endwith %}
-    <!-- {% with messages = get_flashed_messages() %}
+    {% endwith %} -->
+    {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for msg in messages %}
              <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -28,7 +28,7 @@ Given the cleaned  up reads, RESPECT will output the estimated genomic length of
               </div>
             {% endfor %}
         {% endif %} 
-    {% endwith %}-->
+    {% endwith %}
 {%endblock%}
 
 {%block uploads%}

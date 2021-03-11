@@ -1,25 +1,24 @@
 from app import app
-import os
+import os, shutil
 import smtplib, ssl, certifi
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
-from flask import Flask, url_for
+from flask import Flask, url_for, render_template
 
 def sendEmail(timestamp, email, output_dir, result_dir):
     # get developer's email address and pwd
     sendAddress = app.config['EMAIL_ID']
     sendPwd = app.config['EMAIL_PWD']
     # result files
-    files = ["estimated-parameters.txt", "estimated-spectra.txt"]
+    files = os.listdir(os.path.join(app.config['IMAGE_UPLOADS'],result_dir))
     msg = MIMEMultipart()
     msg['To'] = email
     msg['From'] = sendAddress
     msg['Subject'] = 'Skmer: your results are ready'
     link = url_for("result",  result_dir=result_dir, _external= True)
-    bodyInfo = "Dear User, \n We have succesfully ran the software. \n You can either visualize your results through this link: {}. \n \
-        We have also attached the results in this email.\n".format(link)
-    body = MIMEText(bodyInfo, 'html', 'utf-8')  
+    print(link)
+    body = MIMEText(render_template("email.html", link = link), 'html')  
     msg.attach(body)  # add message body (text or html)
     
     for f in files:  # add files to the message
@@ -40,3 +39,10 @@ def sendEmail(timestamp, email, output_dir, result_dir):
             smtp.sendmail(msg['From'], msg['To'], msg.as_string())
             smtp.close()
             print('email sent')
+
+def get_rid_of_folders(input_dir, output_dir):
+	try:
+		shutil.rmtree(input_dir)
+		shutil.rmtree(output_dir)
+	except OSError as e:
+		print("Error: %s : %s" % (input_dir, e.strerror))

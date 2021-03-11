@@ -1,18 +1,16 @@
 from flask import Flask, redirect, url_for, render_template, request, send_from_directory, send_file
-import zipfile
-import subprocess
+# import zipfile
+# import subprocess
 # from app import forms
 from app import tools
 from werkzeug.utils import secure_filename
-import os
-import sys
+import os, sys, shutil, zipfile, subprocess
+# import sys
 from app import app
 from flask.helpers import flash
 from datetime import datetime
-import shutil
-import smtplib
-# import locAL3 as lc3
-# import xAndyPlot as xyPlot
+# import shutil
+# import smtplib
 
 # home page -> render index.html
 @app.route("/") 
@@ -55,7 +53,7 @@ def respect():
 	if request.method == 'POST':
 		if 'folder' not in request.files:
 			print("is it here?")
-			flash('No directory')
+			flash('No directory', 'error')
 			return redirect(request.url)
 		timestamp = datetime.now().strftime('%Y-%m-%d_%H%M%S')
 		print(request.files.getlist('folder'))
@@ -76,7 +74,8 @@ def respect():
 		for file in request.files.getlist('folder'):
 			# if no uploaded file
 			if file.filename == '':
-				flash('No selected file')
+				flash('No selected file', 'error')
+				tools.get_rid_of_folders(input_dir, output_dir)
 				return redirect(request.url)
 			#check for file format
 			if file and allowedFile(file.filename):
@@ -91,20 +90,23 @@ def respect():
 				print(filename)
 			# if extension is not acceptable
 			else:
-				flash("Unacceptable extension. Only accept: {}".format(ext + "and .gz version"), 'warning')
+				flash("Unacceptable extension. Only accept: {}".format(ext + " and .gz version"), 'warning')
+				tools.get_rid_of_folders(input_dir, output_dir)
 				return redirect(request.url)
 				
 
 	   ## for histogram info file
 		if (hasHist):
 			if 'hist-file' not in request.files: 
-			   flash('No file part')
+			   flash('No file part', 'error')
+			   tools.get_rid_of_folders(input_dir, output_dir)
 			   return redirect(request.url)
 			h_file = request.files['hist-file']
 			# if no uploaded histogram info file
 			if h_file.filename == '':
 				print("Need Histogram Info File")
 				flash('No file uploaded')
+				tools.get_rid_of_folders(input_dir, output_dir)
 				return redirect(request.url)
 			# if there is an input file and the file extension is acceptable
 			if h_file and allowedFile(h_file.filename):
@@ -114,7 +116,8 @@ def respect():
 				print(hist_info_filename + ' saved as histogram info file')
 			# if exension is not acceptable
 			else:
-				flash("Unacceptable extension. Only accept: {}".format(ext + "and .gz version"), 'warning')
+				flash("Unacceptable extension. Only accept: {}".format(ext + " and .gz version"), 'warning')
+				tools.get_rid_of_folders(input_dir, output_dir)
 				return redirect(request.url)
 
 		##for mapping file
@@ -130,6 +133,7 @@ def respect():
 			# if file format is not accepted
 			elif m_file.filename != '':
 				flash("Unacceptable extension. Only accept: {}".format(ext + " and .gz version"), 'warning')
+				tools.get_rid_of_folders(input_dir, output_dir)
 				return redirect(request.url)
 		kmer_size = request.form.get('kmer_size')
 		num_iter = request.form.get('iter')
@@ -166,7 +170,11 @@ def respect():
 		# return redirect(request.url)
 		#runs respect
 		run_command(c)
-
+		# delete input folder (and all files in directory)
+		try:
+			shutil.rmtree(input_dir)
+		except OSError as e:
+			print("Error: %s : %s" % (input_dir, e.strerror))
 		flash("Successfully Uploaded Files! This might take a while. You can safely exit out of this page", "info")
 		# send email when the respect is done running
 		email = request.form.get('userEmail')
@@ -176,7 +184,6 @@ def respect():
 		return redirect(url_for("result", result_dir = getResultdir))
 
 	return render_template("respect.html", title = "RESPECT", id = "respect")
-
 	
 # link for skmer
 # upload and run code for respect
@@ -185,8 +192,7 @@ def skmer():
 	ext = "txt, csv, hist, fa, fq, fastq, fna, fasta"
 	if request.method == 'POST':
 		if 'folder' not in request.files:
-			print("is it here?")
-			flash('No directory')
+			flash('No directory', 'error')
 			return redirect(request.url)
 		timestamp = datetime.now().strftime('%Y-%m-%d_%H%M%S')
 		print(request.files.getlist('folder'))
@@ -202,7 +208,8 @@ def skmer():
 		for file in request.files.getlist('folder'):
 			# if no uploaded file
 			if file.filename == '':
-				flash('No selected file')
+				flash('No selected file', 'error')
+				tools.get_rid_of_folders(input_dir, output_dir)
 				return redirect(request.url)
 			#check for file format
 			if file and allowedFile(file.filename):
@@ -213,7 +220,8 @@ def skmer():
 				print(filename)
 				# if extension is not acceptable
 			else:
-				flash("Unacceptable extension. Only accept: {}".format(ext + "and .gz version"), 'warning')
+				flash("Unacceptable extension. Only accept: {}".format(ext + " and .gz version"), 'warning')
+				tools.get_rid_of_folders(input_dir, output_dir)
 				return redirect(request.url)
 
 		librarydir = os.path.join(output_dir,'processed_library')
@@ -222,6 +230,10 @@ def skmer():
 		
 		#runs skmer 
 		run_command(c)
+		try:
+			shutil.rmtree(input_dir)
+		except OSError as e:
+			print("Error: %s : %s" % (input_dir, e.strerror))
 		flash("Successfully Uploaded Files! This might take a while. You can safely exit out of this page", "info")
 		# send email when the respect is done running
 		email = request.form.get('userEmail')

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+    <head>
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>
+            @font-face {
+                font-family:"acumin-pro";
+                src:url("https://use.typekit.net/af/46da36/00000000000000003b9acaf6/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
+                format("woff2"),url("https://use.typekit.net/af/46da36/00000000000000003b9acaf6/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
+                format("woff"),url("https://use.typekit.net/af/46da36/00000000000000003b9acaf6/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
+                format("opentype");
+                font-display:auto;
+                font-style:normal;
+                font-weight:400;
+            }
+            @media (min-width: 576px) {
+            .container {
+                max-width: 540px;
+            }
+}
+            .container {
+                min-width: 70%;
+                padding-right: 15px;
+                padding-left: 15px;
+                margin-right: auto;
+                margin-left: auto;
+            }
+            .title {
+                font-family: "accumin-pro";
+                font-family: "acumin-pro",sans-serif !important;
+                font-weight: 400 !important;
+                font-style: italic !important;
+                color: #DDD3C3 !important;
+                border-bottom: 1px solid;
+                text-align: center;
+                padding: 10px 0px 10px 0px;
+                margin-top: 0%;
+                margin-bottom: 0%;
+            }
+            .msg {
+                font-family: "acumin-pro",sans-serif !important;
+                font-weight: 400 !important;
+                font-style: normal !important;
+                color: #4a4951;
+                font-size: medium;
+            }
+        </style>
+    </head>
+    <body>
+        <div class = "container justify-content-center">
+            <h1 class = "title">
+            Skmer
+            </h1>
+            <p class = "msg">
+                Dear User, <br><br> We have succesfully completed our analysis. <br><br> You can either see your results  
+                <a href = "{{ link }}">here</a> or
+                see the attachment file in this email.<br>
+            </p>
+        </div>
+    </body>
+</html>
