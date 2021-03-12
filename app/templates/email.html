@@ -16,7 +16,7 @@
             }
             @media (min-width: 576px) {
             .container {
-                max-width: 540px;
+                max-width: 95%;
             }
 }
             .container {
@@ -32,7 +32,7 @@
                 font-weight: 400 !important;
                 font-style: italic !important;
                 color: #DDD3C3 !important;
-                border-bottom: 1px solid;
+                border-bottom: 2px solid;
                 text-align: center;
                 padding: 10px 0px 10px 0px;
                 margin-top: 0%;
@@ -43,20 +43,40 @@
                 font-weight: 400 !important;
                 font-style: normal !important;
                 color: #4a4951;
-                font-size: medium;
+                font-size: large;
+            }
+            a {
+                color: #4a4951;
+            }
+            .center {
+                text-align: center;
             }
         </style>
     </head>
     <body>
-        <div class = "container justify-content-center">
+        <div class = "container">
             <h1 class = "title">
             Skmer
             </h1>
-            <p class = "msg">
-                Dear User, <br><br> We have succesfully completed our analysis. <br><br> You can either see your results  
-                <a href = "{{ link }}">here</a> or
-                see the attachment file in this email.<br>
-            </p>
+            {% if link != '' %}
+                <p class = "msg">
+                    Dear User, <br><br> We have succesfully completed our analysis. <br><br> You can either see your results  
+                    <a href = "{{ link }}">here</a> or
+                    see the attachment file in this email.<br>
+                </p>
+                <p class = "msg center" style="font-size: small;">
+                    <strong>Questions?</strong> Visit our contact us page, <a href = "{{ url_for('contact') }}">here</a>
+                </p>
+            {% else %}
+                <p class = "msg">
+                    <strong>From: </strong>{{firstN}} {{lastN}} <br>
+                    <strong>Requester's Email: </strong>{{user_email}} <br>
+                    <br>
+                    <strong>Message: </strong>
+                    {{user_msg}}
+                </p>
+            {% endif %}
         </div>
+        
     </body>
 </html>

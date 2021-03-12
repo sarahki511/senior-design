@@ -1,5 +1,29 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
+    <script>
+        // Disable form submissions if there are invalid fields
+        (function() {
+          'use strict';
+          window.addEventListener('load', function() {
+            // Get the forms we want to add validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+            //   when submitted and check if test passed
+              form.addEventListener('submit', function(event) {
+                // if no -> prevent submission
+                if (form.checkValidity() === false) {
+                  event.preventDefault();
+                  event.stopPropagation();
+                }
+                // if yes -> add class "was-validated"
+                form.classList.add('was-validated');
+              }, false);
+            });
+          }, false);
+        })();
+    
+    </script>
     <head>
         <title>{%block title%}{% endblock %}</title>
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -27,7 +51,7 @@
                             ('/', 'home', 'Home'),
                             ('#', 'flow', 'Flow Diagram'),
                             ('#', 'app', 'App'),
-                            ('#', 'contact', 'Contact Us')
+                            ('/contact', 'contact', 'Contact Us')
                             ] -%}
                         {% set tools = [
                             ('/consult', 'consult', 'CONSULT'),

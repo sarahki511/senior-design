@@ -5,8 +5,11 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
 from flask import Flask, url_for, render_template
+from validate_email import validate_email
+# use validate_email.updater import update_builtin_blacklist only if you want to update manually
+# from validate_email.updater import update_builtin_blacklist
 
-def sendEmail(timestamp, email, output_dir, result_dir):
+def sendResults(timestamp, email, output_dir, result_dir):
     # get developer's email address and pwd
     sendAddress = app.config['EMAIL_ID']
     sendPwd = app.config['EMAIL_PWD']
@@ -26,19 +29,40 @@ def sendEmail(timestamp, email, output_dir, result_dir):
         attachment = MIMEApplication(open(file_path, "rb").read(), _subtype="txt")
         attachment.add_header('Content-Disposition','attachment', filename=f)
         msg.attach(attachment)
-    # context = ssl.create_default_context()
-    with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
-            smtp.ehlo()
-            # smtp.starttls(context=context)
-            smtp.starttls()
-            smtp.ehlo()
-            smtp.login(sendAddress, sendPwd)
-            # subject = 'Test if email sends'
-            # body = f'sent!'
-            # msg = f'Subject: {subject}\n\n{body}'
-            smtp.sendmail(msg['From'], msg['To'], msg.as_string())
-            smtp.close()
-            print('email sent')
+    try:
+        with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
+                smtp.ehlo()
+                smtp.starttls()
+                smtp.ehlo()
+                smtp.login(sendAddress, sendPwd)
+                smtp.sendmail(msg['From'], msg['To'], msg.as_string())
+                smtp.close()
+                print('email sent results')
+    except:
+        print("An error occurred")
+
+def sendContact(firstN, lastN, user_email, user_msg):
+    sendAddress = app.config['EMAIL_ID']
+    sendPwd = app.config['EMAIL_PWD']
+    msg = MIMEMultipart()
+    msg['To'] = sendAddress
+    # msg['To'] = user_email
+    msg['From'] = sendAddress
+    msg['Subject'] = "Contact Request from Skmer Website"
+    body = MIMEText(render_template("email.html", link = '', firstN = firstN, \
+        lastN = lastN, user_email = user_email, user_msg = user_msg), 'html')  
+    msg.attach(body)
+    try:
+        with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
+                smtp.ehlo()
+                smtp.starttls()
+                smtp.ehlo()
+                smtp.login(sendAddress, sendPwd)
+                smtp.sendmail(msg['From'], msg['To'], msg.as_string())
+                smtp.close()
+                print('email sent for contact')
+    except:
+        print("An error occurred")
 
 def get_rid_of_folders(input_dir, output_dir):
 	try:
@@ -46,3 +70,29 @@ def get_rid_of_folders(input_dir, output_dir):
 		shutil.rmtree(output_dir)
 	except OSError as e:
 		print("Error: %s : %s" % (input_dir, e.strerror))
+
+# return true or false
+def allowedFile(filename):
+	# if the filename has '.' and the word after the '.' 
+	
+	if '.' in filename:
+		ext = filename.rsplit('.',1)[1].lower()
+		upper = filename.rsplit('.',1)[0]
+	# already invalid so return false
+	else:
+		return 0
+	# if zipped, check if the ext is valid before gz
+	if ext == "gz":
+		return upper.rsplit('.',1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
+	# is in allowedExtension -> return true
+	return ext in app.config['ALLOWED_EXTENSIONS']
+
+def run_command(command):
+	# return 'Hello World'
+	try:
+		result = subprocess.check_output([command],shell=True)
+		return result
+	except subprocess.CalledProcessError as e:
+		print( "error occurred")
+		flash('Sub Process Error')
+		return str(e)

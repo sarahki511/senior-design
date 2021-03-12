@@ -1,16 +1,13 @@
 from flask import Flask, redirect, url_for, render_template, request, send_from_directory, send_file
-# import zipfile
-# import subprocess
-# from app import forms
 from app import tools
 from werkzeug.utils import secure_filename
-import os, sys, shutil, zipfile, subprocess
-# import sys
+import os, sys, shutil, zipfile, subprocess, re
 from app import app
 from flask.helpers import flash
 from datetime import datetime
-# import shutil
-# import smtplib
+from validate_email import validate_email
+# use validate_email.updater import update_builtin_blacklist only if you want to update manually
+# from validate_email.updater import update_builtin_blacklist
 
 # home page -> render index.html
 @app.route("/") 
@@ -32,15 +29,15 @@ def consult():
 		if file.filename == '':
 			flash('No selected file')
 			return redirect(request.url)
-		if file and allowedFile(file.filename):
+		if file and tools.allowedFile(file.filename):
 			timestamp = datetime.now().strftime('%Y-%m-%d_%H%M%S')
 			filename = secure_filename(file.filename)
 			uploaded = os.path.join(app.config['IMAGE_UPLOADS'], timestamp)
 			file.save(uploaded)
 			email = request.form.get('userEmail')
 			name = request.form.get('getUserName')
-			tools.sendEmail(timestamp, email)
-			return redirect(url_for('pending'))
+			tools.sendResults(timestamp, email)
+			# return redirect(url_for('pending'))
 			# return uploaded_file(filename)
 	return render_template("consult.html", title = "CONSULT", id = "consult")
 
@@ -51,6 +48,11 @@ def consult():
 def respect():
 	ext = "txt, csv, hist, fa, fq, fastq, fna, fasta"
 	if request.method == 'POST':
+		email = request.form.get('userEmail')
+		# if the user email is valid and existing, warn and ask to submit again
+		if validate_email(email_address=email, check_regex=True, check_mx=True) == False:
+			flash('Your email does not exist. Try again', 'error')
+			return redirect(request.url)
 		if 'folder' not in request.files:
 			print("is it here?")
 			flash('No directory', 'error')
@@ -78,7 +80,7 @@ def respect():
 				tools.get_rid_of_folders(input_dir, output_dir)
 				return redirect(request.url)
 			#check for file format
-			if file and allowedFile(file.filename):
+			if file and tools.allowedFile(file.filename):
 				
 				#checking if there's a histogram file
 				if file.filename.rsplit('.',1)[1].lower() == 'hist':
@@ -109,7 +111,7 @@ def respect():
 				tools.get_rid_of_folders(input_dir, output_dir)
 				return redirect(request.url)
 			# if there is an input file and the file extension is acceptable
-			if h_file and allowedFile(h_file.filename):
+			if h_file and tools.allowedFile(h_file.filename):
 				hist_info_filename = secure_filename(h_file.filename)
 				hist_file_path = os.path.join(input_dir, hist_info_filename)
 				h_file.save(hist_file_path)
@@ -124,7 +126,7 @@ def respect():
 		if 'mapping-file' in request.files:
 			m_file = request.files['mapping-file']
 			# if mapping file is accepted
-			if m_file.filename != '' and allowedFile(m_file.filename):
+			if m_file.filename != '' and tools.allowedFile(m_file.filename):
 				hasMapping = True
 				mapping_filename = secure_filename(m_file.filename)
 				mapping_file_path = os.path.join(input_dir, mapping_filename)
@@ -169,7 +171,7 @@ def respect():
 		print(c)
 		# return redirect(request.url)
 		#runs respect
-		run_command(c)
+		# tools.run_command(c)
 		# delete input folder (and all files in directory)
 		try:
 			shutil.rmtree(input_dir)
@@ -177,9 +179,8 @@ def respect():
 			print("Error: %s : %s" % (input_dir, e.strerror))
 		flash("Successfully Uploaded Files! This might take a while. You can safely exit out of this page", "info")
 		# send email when the respect is done running
-		email = request.form.get('userEmail')
 		getResultdir = 'respect/'+timestamp+'_results'
-		tools.sendEmail(timestamp, email, output_dir, getResultdir)
+		tools.sendResults(timestamp, email, output_dir, getResultdir)
 		
 		return redirect(url_for("result", result_dir = getResultdir))
 
@@ -191,6 +192,11 @@ def respect():
 def skmer():
 	ext = "txt, csv, hist, fa, fq, fastq, fna, fasta"
 	if request.method == 'POST':
+		email = request.form.get('userEmail')
+		# if the user email is valid and existing, warn and ask to submit again
+		if validate_email(email_address=email, check_regex=True, check_mx=True) == False:
+			flash('Your email does not exist. Try again', 'warning')
+			return redirect(request.url)
 		if 'folder' not in request.files:
 			flash('No directory', 'error')
 			return redirect(request.url)
@@ -212,7 +218,7 @@ def skmer():
 				tools.get_rid_of_folders(input_dir, output_dir)
 				return redirect(request.url)
 			#check for file format
-			if file and allowedFile(file.filename):
+			if file and tools.allowedFile(file.filename):
 				#uploads the files to uploads/skmer
 				filename = secure_filename(file.filename)
 				uploaded = os.path.join(input_dir, filename)
@@ -229,16 +235,15 @@ def skmer():
 		c = "skmer reference {0} -l {1} -o {2} ".format(input_dir,librarydir,dist_matrix_prefix)
 		
 		#runs skmer 
-		run_command(c)
+		tools.run_command(c)
 		try:
 			shutil.rmtree(input_dir)
 		except OSError as e:
 			print("Error: %s : %s" % (input_dir, e.strerror))
 		flash("Successfully Uploaded Files! This might take a while. You can safely exit out of this page", "info")
 		# send email when the respect is done running
-		email = request.form.get('userEmail')
 		getResultdir = 'skmer/'+timestamp+'_results'
-		# tools.sendEmail(timestamp, email, output_dir, getResultdir)
+		# tools.sendResults(timestamp, email, output_dir, getResultdir)
 		return redirect(url_for("result", result_dir = getResultdir))
 
 
@@ -260,17 +265,7 @@ def return_files(dirname):
 	try:
 		#getting absolute path to results folder 
 		results_dir = os.path.join(os.getcwd(), dirname)
-		
-		# zip_path = os.path.join(results_dir,'output.zip')
-		# zipf = zipfile.ZipFile(zip_path,'w', zipfile.ZIP_DEFLATED)
-		# files = os.listdir(results_dir)
-		# for root,dirs,files in os.walk(results_dir):
-		# 	for file in files:
-		# 		zipf.write(dirname+file)
-		# zipf.close()
-
 		shutil.make_archive(os.path.join(results_dir,'output'), 'zip', results_dir)
-
 		return send_from_directory(directory = results_dir,filename='output.zip',
 				mimetype = 'zip',
 				attachment_filename= 'output.zip',
@@ -282,57 +277,27 @@ def return_files(dirname):
 
 @app.route("/apples", methods=('GET', 'POST')) 
 def apples():
-	# return getForm("apples")
 	return render_template("apples.html", title = "APPLES", id = "apples")
 
 @app.route("/misa", methods=('GET', 'POST')) 
 def misa():
-	# return getForm("misa")
 	return render_template("misa.html", title = "MISA", id = "misa")
 
 @app.route("/pending", methods = ('GET', 'POST')) 
 def pending():
 	return render_template("pending.html", title = "PENDING", id = "pending")
 
-
-
-def getForm(currentPg):
-	form = forms.inputForm()
-	htmlLink = currentPg + ".html"
-	if form.validate_on_submit():
-		# folderDir = os.path.join(os.path.dirname(app.instance_path), 'static','assets' )
-		seqFile = form.sequenceFile.data
-		fileName = secure_filename(seqFile.filename)
-		seqFile.save(os.path.join(uploads_dir, fileName))
-		flash('Document uploaded successfully!')
-		return redirect("pending.html")
-	return render_template(htmlLink, title = currentPg.upper(), id = currentPg, form = form)\
-
-# return true or false
-def allowedFile(filename):
-	# if the filename has '.' and the word after the '.' 
-	
-	if '.' in filename:
-		ext = filename.rsplit('.',1)[1].lower()
-		upper = filename.rsplit('.',1)[0]
-	# already invalid so return false
+@app.route("/contact", methods=('GET', 'POST')) 
+def contact():
+	if request.method == 'POST':
+		email = request.form.get('userEmail')
+		firstN = request.form.get('firstN')
+		lastN = request.form.get('lastN')
+		msg = request.form.get('msg')
+		tools.sendContact(firstN, lastN, email, msg)
+		return render_template("emailSuccess.html", title = "Email Received")
 	else:
-		return 0
-	# if zipped, check if the ext is valid before gz
-	if ext == "gz":
-		return upper.rsplit('.',1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
-	# is in allowedExtension -> return true
-	return ext in app.config['ALLOWED_EXTENSIONS']
-	# '.' in filename and \
-	# 	(filename.rsplit('.',1)[1].lower() in app.config['ALLOWED_EXTENSIONS']) \
-	# 		# or filename.rsplit('.')[1].lower() + ".gz" in app.config['ALLOWED_EXTENSIONS'] )
+		return render_template("contact.html", title = "skmer | Contact Us", id = "contact")
 
-def run_command(command):
-	# return 'Hello World'
-	try:
-		result = subprocess.check_output([command],shell=True)
-		return result
-	except subprocess.CalledProcessError as e:
-		print( "error occurred")
-		flash('Sub Process Error')
-		return str(e)
+
+
