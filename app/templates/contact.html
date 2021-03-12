@@ -7,6 +7,18 @@
         <div class = "container my-5 min-vh-100">
             <h1 class = "jumbo-sub mt-3 mb-4">Contact Request</h1>
             <p class = "jumbo-desc mt-3 mb-4">Please fill out and submit the following form. An asterisk (*) indicates required information.</p>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for msg in messages %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        {{msg}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                {% endif %} 
+            {% endwith %}
             <form class = "px-2 needs-validation" id="form-param" method = "POST" enctype="multipart/form-data" novalidate>
                 <div class = "form-row mt-3 mb-4">
                     <div class = "form-group col-md-4 col-sm-12">

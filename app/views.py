@@ -291,6 +291,9 @@ def pending():
 def contact():
 	if request.method == 'POST':
 		email = request.form.get('userEmail')
+		if validate_email(email_address=email, check_regex=True, check_mx=True) == False:
+			flash("Your email does not exist. Try again")
+			return redirect(request.url)
 		firstN = request.form.get('firstN')
 		lastN = request.form.get('lastN')
 		msg = request.form.get('msg')
