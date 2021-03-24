@@ -5,6 +5,7 @@ import os, sys, shutil, zipfile, subprocess, re
 from app import app
 from flask.helpers import flash
 from datetime import datetime
+import ssl
 from validate_email import validate_email
 # use validate_email.updater import update_builtin_blacklist only if you want to update manually
 # from validate_email.updater import update_builtin_blacklist
@@ -171,7 +172,7 @@ def respect():
 		print(c)
 		# return redirect(request.url)
 		#runs respect
-		# tools.run_command(c)
+		tools.run_command(c)
 		# delete input folder (and all files in directory)
 		try:
 			shutil.rmtree(input_dir)

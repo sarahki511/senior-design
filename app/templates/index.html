@@ -8,7 +8,8 @@
             <div class = "jumbotron jumbotron-fluid no-gutters d-flex align-items-center my-0" style="min-height: 43vh !important;">
                 <div class = "container ml-2 my-auto">
                     <div class = "text-left text-dark">
-                        <h6 class = "jumbo-title">What is Skmer</h6>
+                        <span class = "jumbo-title inline-block">What is</span>
+                        <span class = "jumbo-title underline inline-block py-2" style="border-bottom: 2px solid #b6da49; margin-right: -.5em !important; margin-left: .5rem;">Skmer</span>
                         <p class="my-4 py-2 jumbo-sub">Assembly-free and alignment-free sample identification using genome skims</p>
                         <p class = "jumbo-desc">We introduce an assembly-free and alignment-free tool, Skmer, to compute genomic distances between the query and reference<br> genome skims. Skmer shows excellent accuracy in estimating distances and identifying the closest match in reference datasets.</p>
                         <a class = "pl-0 jumbo-desc btn btn-link btn-md" href="#">Learn more (download PDF)</a>
@@ -106,69 +107,39 @@
                     </div>
                 </div>
             </div>
-            <div class = "container-fluid my-auto min-vh-100" id = "products-home">
-                <div class = "row h-100 justify-content-start mx-4">
-                    <h1 class = "px-3 py-3 text-dark app-title" id = "explore-products">FLOW DIAGRAM</h1>
+            <div class = "container-fluid my-auto" id = "choose-pipe">
+                <div class = "row justify-content-start mx-4">
+                    <h1 class = "pl-2 py-2 mt-5 text-dark pipe-title">Choose a Pipeline for your Sample</h1>
                 </div>
-                
-                <!-- <div class = "row align-middle justify-content-around pt-4 mx-3">
-                    <div class = "col-md-5 col-sm-12 mx-auto no-gutters">
-                        <div class = "card-block text-center py-5">
-                            <a href="{{url_for('consult')}}" id = "products">
-                                <img src="static/image/circle.png" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
-                            </a>
-                        </div>
+                <div class = "row my-5 d-flex justify-content-start">
+                    <div class = "col-md-4 offset-md-1 d-flex align-item-center" style= "background-color: rgba(255,255,255,0.5); height: 300px; width: 220px;">
+                        {% set pipeline = [
+                            ('#', '1', 'Processing of Individual Query and References'),
+                            ('#', '2', 'Distance Estimation'),
+                            ('#', '3', 'Indication of Query'),
+                            ('#', '4', 'Mixture of Analysis')
+                            ] -%}
+                        <ul class = "pipe-list">
+                            {% for ref, num, desc in pipeline %}
+                                <li class = "pipe-item mx-3">
+                                    <a href = "{{ref}}" id = "pipeline_list">Pipeline {{num}}</a>
+                                    <span>{{desc}}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
                     </div>
-                    <div class = "col-md-5 col-sm-12 d-flex align-items-center mx-auto no-gutters">
-                        <div class = "container text-center py-5">
-                            <p class = "display-4 mt-5">CONSULT</p>
-                            <p class = "h5 mb-5">Clean the genome skim by filtering extraneous reads</p>
-                        </div>
-                    </div>
-                    <div class = "col-md-5 col-sm-12 d-flex align-items-center mx-auto no-gutters">
-                        <div class = "container text-center py-5">
-                            <p class = "display-4 mt-5">RESPECT</p>
-                            <p class = "h5 mb-5">Estimate the basic genomic parameters</p>
-                        </div>
-                    </div>
-                    <div class = "col-md-5 col-sm-12  mx-auto no-gutters">
-                        <div class = "card-block  text-center py-5">
-                            <a href="{{ url_for('respect') }}" id = "products">
-                                <img src="static/image/circle.png" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
-                            </a>
-                        </div>
-                    </div>
-                    
-                        <div class = "col-md-5 col-sm-12 mx-auto no-gutters">
-                            <div class = "card-block text-center py-5">
-                                <a href="{{ url_for('apples') }}" id = "products">
-                                    <img src="static/image/circle.png" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
-                                </a>
-                            </div>
-                        </div>
-                        <div class = "col-md-5 col-sm-12 d-flex align-items-center mx-auto no-gutters">
-                            <div class = "container text-center py-5">
-                                <p class = "display-4 mt-5">APPLES</p>
-                                <p class = "h5 mb-5">Phylogenetically place reads without reference sequences</p>
-                            </div>
-                        </div>
 
-                        <div class = "col-md-5 col-sm-12 d-flex align-items-center mx-auto no-gutters">
-                            <div class = "container text-center py-5">
-                                <p class = "display-4 mt-5">MISA</p>
-                                <p class = "h5 mb-5">Calculate distance deconvolution and phylogenetic multi-placement</p>
-                            </div>
-                        </div>
-                        <div class = "col-md-5 col-sm-12  mx-auto no-gutters">
-                            <div class = "card-block  text-center py-5">
-                                <a href="{{ url_for('misa') }}" id = "products">
-                                    <img src="static/image/circle.png" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
-                                </a>
-                            </div>
-                        </div> -->
-
-                
+                </div>
             </div>
+            <div class = "container-fluid align-content-between my-auto min-vh-100" id = "products-home">
+                <div class = "row h-100 justify-content-start mx-4">
+                    <h1 class = "pr-2 pl-3 py-3 mt-5 text-dark app-title" id = "explore-products">FLOW DIAGRAM</h1>
+                </div>
+                <div class = "d-flex my-5 pb-5 pt-3 justify-content-center align-items-center">
+                    <img src = "static/image/flow_chart2.png" class = "align-self-center flow_chart img-fluid" alt= "Responsive image">
+                </div>
+            </div>
+            
             <div class = "container-fluid border">
                 <div class = "row bg-white pt-3 mx-0">
                     <div class = "col-fluid ml-2">

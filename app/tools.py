@@ -5,7 +5,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
 from flask import Flask, url_for, render_template
-from validate_email import validate_email
+# from email_validator import email_validator
 # use validate_email.updater import update_builtin_blacklist only if you want to update manually
 # from validate_email.updater import update_builtin_blacklist
 
