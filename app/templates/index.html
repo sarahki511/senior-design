@@ -5,7 +5,7 @@
 {%block body%}
     <body>
         <div class = "container-fluid">
-            <div class = "jumbotron jumbotron-fluid no-gutters d-flex align-items-center my-0" style="min-height: 43vh !important;">
+            <div class = "jumbotron jumbotron-fluid no-gutters d-flex align-items-center my-0 py-0" style="min-height: 35vh !important;">
                 <div class = "container ml-2 my-auto">
                     <div class = "text-left text-dark">
                         <span class = "jumbo-title inline-block">What is</span>
@@ -16,7 +16,8 @@
                     </div>  
                 </div>
             </div>
-            <div class = "container-fluid min-vh-50 my-auto">
+            <!-- do not touch -> need this just in case the other design does not look good -->
+            <!-- <div class = "container-fluid min-vh-50 my-auto">
                 <div class = "row h-100 pt-5 pb-4 justify-content-center align-items-start mx-auto">
                     <div class = "app col my-auto text-center text-dark app-title px-0">
                         <p class = "text-center mx-0 text-dark app-title px-0" style = "display: inline-block !important;">
@@ -93,7 +94,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <img src="static/image/line2.svg" class="img-fluid m-0 pb-5" width = "1" height = "1.5" alt="Responsive image"> -->
                     <div class = "col-md-2 col-sm-7 my-0 mx-0 h-100 px-0 no-gutters">
                         <div class = "pt-4 mt-2 card-block text-center">
                             <a href="{{ url_for('misa') }}" id = "products">
@@ -106,24 +106,24 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class = "container-fluid my-auto" id = "choose-pipe">
                 <div class = "row justify-content-start mx-4">
                     <h1 class = "pl-2 py-2 mt-5 text-dark pipe-title">Choose a Pipeline for your Sample</h1>
                 </div>
-                <div class = "row my-5 d-flex justify-content-start">
-                    <div class = "col-md-4 offset-md-1 d-flex align-item-center" style= "background-color: rgba(255,255,255,0.5); height: 300px; width: 220px;">
+                <div class = "row my-4 d-flex justify-content-start">
+                    <div class = "col-md-4 offset-md-1 d-flex align-item-center" style= "background-color: rgba(255,255,255,0.6); height: 300px; width: 220px;">
                         {% set pipeline = [
                             ('#', '1', 'Processing of Individual Query and References'),
                             ('#', '2', 'Distance Estimation'),
                             ('#', '3', 'Indication of Query'),
                             ('#', '4', 'Mixture of Analysis')
                             ] -%}
-                        <ul class = "pipe-list">
+                        <ul class = "pipe-list m-0 px-0 pt-2">
                             {% for ref, num, desc in pipeline %}
-                                <li class = "pipe-item mx-3">
-                                    <a href = "{{ref}}" id = "pipeline_list">Pipeline {{num}}</a>
-                                    <span>{{desc}}</span>
+                                <li class = "pipe-item my-4 px-0 d-flex align-item-around justify-content-start">
+                                    <a href = "{{ref}}" class = "py-2 pl-2"id = "pipeline_list">Pipeline {{num}}</a>
+                                    <span class = "pl-3 pipe_desc align-self-center">{{desc}}</span>
                                 </li>
                             {% endfor %}
                         </ul>
@@ -140,6 +140,103 @@
                 </div>
             </div>
             
+            <div class = "container-fluid min-vh-100 my-auto">
+                <div class = "row h-100 pt-5 pb-4 justify-content-center align-items-start mx-auto">
+                    <div class = "app col my-auto text-center text-dark app-title px-0">
+                        <p class = "text-center mx-0 text-dark app-title px-0" style = "display: inline-block !important;">
+                            Applications
+                            <img class = "mb-1"src = "static/image/i-icon.svg" style = "vertical-align: middle !important;"width = "13" height = "13"/>
+                        </p>
+                    </div>
+                </div>
+                <div class = "row mt-4 pb-4 align-middle justify-content-around align-items-top mx-3">
+                    <!-- <div class = "col-md-2 col-sm-7 my-0 mx-0 h-100  px-0 no-gutters">
+                        <div class = "card-block h-100 text-center">
+                            <a href="{{ url_for('consult') }}" class= "border" id = "products">
+                                <img src="static/image/consult-icon.svg" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
+                                <a class = "card-link jumbo-sub" href="{{ url_for('consult') }}">CONSULT</a>
+                                <p class="card-text mt-1">Remove Contamination</p>
+                            </a>
+                            <div class="card-body text-center">
+                                <a class = "card-link jumbo-sub" href="{{ url_for('consult') }}">CONSULT</a>
+                                <p class="card-text mt-1">Remove Contamination</p>
+                            </div>
+                         </div>
+                    </div> -->
+                    <a href="{{ url_for('consult') }}" class= "border a-app" id = "products">
+                        CONSULT
+                    </a>
+                    <a href="{{ url_for('respect') }}" class= "border a-app" id = "products">
+                        RESPECT
+                    </a>
+                    <a href="{{ url_for('skmer') }}" class= "border a-app" id = "products">
+                        SKMER
+                    </a>
+                    <!-- <div class = "col-md-2 col-sm-7 my-0 mx-0 h-100 px-0 no-gutters">
+                        <div class = "card-block text-center">
+                            <a href="{{ url_for('respect') }}" id = "products">
+                                <img src="static/image/respect-icon.svg" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
+                            </a>
+                            <div class="card-body text-center">
+                                <a class = "card-link jumbo-sub" href="{{ url_for('respect') }}">RESPECT</a>
+                                <p class="card-text mt-1">Estimate length, coverage<br>and repeat spectrum</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "col-md-2 col-sm-7 my-0 mx-0 h-100 px-0 no-gutters">
+                        <div class = "card-block text-center">
+                            <a href="{{ url_for('apples') }}" id = "products">
+                                <img src="static/image/apple-icon.svg" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
+                            </a>
+                            <div class="card-body text-center">
+                                <a class = "card-link jumbo-sub" href="{{ url_for('skmer') }}">SKMER</a>
+                                <p class="card-text mt-1">Estimating genomic distances<br>between genome-skims</p>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- <div class = "col-md-2 col-sm-7 my-0 mx-0 h-100 px-0 no-gutters">
+                        <div class = "card-block text-center">
+                            <a href="{{ url_for('apples') }}" id = "products">
+                                <img src="static/image/apple-icon.svg" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
+                            </a>
+                            <div class="card-body text-center">
+                                <a class = "card-link jumbo-sub" href="{{ url_for('apples') }}">APPLES</a>
+                                <p class="card-text mt-1">Phylogenetic placement</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "col-md-2 col-sm-7 my-0 mx-0 h-100 px-0 no-gutters">
+                        <div class = "card-block text-center">
+                            <a href="{{ url_for('misa') }}" id = "products">
+                                <img src="static/image/misa-icon.svg" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
+                            </a>
+                            <div class="card-body text-center">
+                                <a class = "card-link jumbo-sub" href="{{ url_for('misa') }}">MISA</a>
+                                <p class="card-text mt-1">Phylogenetic placement</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "col-md-2 col-sm-7 my-0 mx-0 h-100 px-0 no-gutters">
+                        <div class = "pt-4 mt-2 card-block text-center">
+                            <a href="{{ url_for('misa') }}" id = "products">
+                                <img src="static/image/runAll.svg" class="card-img-top img-fluid" id = "product-img" alt="Responsive image">
+                            </a>
+                            <div class="card-body text-center">
+                                <a class = "card-link jumbo-sub" href="{{ url_for('misa') }}">RUN ALL</a>
+                                <p class="card-text">Perform all 4 applications at once</p>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class = "row mt-4 pb-4 align-middle justify-content-around align-items-top mx-3">
+                    <a href="{{ url_for('apples') }}" class= "border a-app" id = "products">
+                        APPLES
+                    </a>
+                    <a href="{{ url_for('misa') }}" class= "border a-app" id = "products">
+                        MISA 
+                    </a>
+            </div>
+
             <div class = "container-fluid border">
                 <div class = "row bg-white pt-3 mx-0">
                     <div class = "col-fluid ml-2">

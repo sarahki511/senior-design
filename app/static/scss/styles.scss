@@ -25,7 +25,18 @@ body {
 #choose-pipe .pipe-title {
   font-size: x-large !important;
   color: #161C1A;
+  font-weight: 700;
 }
+
+.pipe-title:after {
+  border-bottom: 2px solid #b6da49;
+  content: '';
+  display: block;
+  margin-left: 29%;
+  width: 23%;
+  margin-top: 2%;
+}
+
 .flow_chart {
   width: 85%;
 }
@@ -192,15 +203,27 @@ $theme-colors: (
   font-weight: bold;
 }
 
+.a-app {
+  height: 15%;
+  line-height: 80px;  
+  width: 15%;  
+  font-size: 2em;
+  font-weight: bold;
+  border-radius: 50%;
+  background-color: #6392E6;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
 .active {
   border-bottom-style: solid;
   border-color: #222b29;
   color: #303033;
 }
 .jumbotron {
-  // background-color: #ddd3c3 !important;
-  background-image: url(../image/dna-bg.png);
-  background-color: #f8f8f8 !important;
+  background-color: #fff !important;
+  // background-image: url(../image/dna-bg.png);
+  // background-color: #f8f8f8 !important;
   background-repeat: no-repeat;
   background-position: 50% -225%;
   background-attachment: fixed;
@@ -384,9 +407,29 @@ body {
   font-size: small !important;
 }
 
+.pipe_desc {
+  font-size: smaller;
+  color: black;
+}
+
 .pipe-list {
   list-style: none;
 }
+#pipeline_list {
+  border: 2px solid black;
+  font-size: small;
+  text-transform: uppercase;
+  letter-spacing: .5rem;
+  text-decoration: none;
+  border-radius: 3%;
+}
+#pipeline_list:hover {
+  border: 2px solid #b5b54e;
+  background-color: #b5b54e;
+  text-decoration: none !important;
+  color: white;
+}
+
 .m-0 {
   margin:0 !important;
 }
