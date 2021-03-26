@@ -8,6 +8,14 @@ body {
   font-family: "acumin-pro",sans-serif !important;
   font-style: normal !important;
 }
+.app-info {
+  display:none;
+}
+
+.info:hover + .app-info {
+  display:block;
+  background-color: #BDBDBD;
+}
 
 .custom-bg {
   // background-color: rgba($color: #727a7c, $alpha: 1.0) !important;
@@ -204,16 +212,35 @@ $theme-colors: (
 }
 
 .a-app {
-  height: 15%;
-  line-height: 80px;  
-  width: 15%;  
-  font-size: 2em;
-  font-weight: bold;
+  height: 190px;
+  width: 190px;
+  font-size: x-large;
   border-radius: 50%;
+  border-color: none;
+  letter-spacing: .05rem;
   background-color: #6392E6;
   color: white;
   text-align: center;
+  vertical-align: middle;
+  padding-top: 4rem;
   cursor: pointer;
+  // box-shadow: 4px 4px rgba($color: #929292, $alpha: .11);
+}
+.a-app:hover {
+  text-decoration: none;
+  color: white;
+  background-color: #b6da49;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  -ms-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+}
+
+.app-desc {
+  font-size: .7rem;
+  letter-spacing: 0;
+  display: block;
+  line-height: 150%;
 }
 .active {
   border-bottom-style: solid;
@@ -288,11 +315,6 @@ $theme-colors: (
   display:block !important;
   // visibility: visible;
 }
-// .dropdown {
-//   visibility: hidden;
-//   transition: 0.2s 1s !important;
-
-// }
 
 .dropdown {
   position: static !important;
