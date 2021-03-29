@@ -8,18 +8,18 @@ A web application that provides inexpensive computational methods of assessing b
 1. Clone the repository
 2. Navigate to your cloned repository and set up a virtual environment and install all dependencies:
    - Using conda:
-   '''
+   '''bash
    conda env create -f environment.yml
    conda activate env
    '''
    - Using pip:
-   '''
+   '''bash
    python3 -m venv env
    source env/bin/activate
    pip install -r requirements.txt
    '''
 3. Set up flask development server
-   '''
+   '''bash
    export FLASK_APP=run.py
    export FLASK_ENV=development
    '''
@@ -30,15 +30,15 @@ Follow this instruction whenever you want to run the web application on local co
 1. Go to the cloned local directory
 2. Activate the virtual environment:
    - Using conda:
-   '''
+   '''bash
    conda activate env
    '''
    - Using pip:
-   '''
+   '''bash
    source env/bin/activate
    '''
 3. Use following command line to run Flask application:
-   '''
+   '''bash
    flask run
    '''
 4. Once ran, development server will be running on ''' localhost:5000 ''' in your default web browser
