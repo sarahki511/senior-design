@@ -1,53 +1,60 @@
 # AI-Powered EcoGenomics
 
 A web application that provides inexpensive computational methods of assessing biodiversity and both genomic and environmental components of resilience with genome skims.
+
 ***This website is still in development and only available for local usage***
 
 ## Local Installation
+
 ***Pythong 3.6 and up is required to install locally***
+
 1. Clone the repository
 2. Navigate to your cloned repository and set up a virtual environment and install all dependencies:
    - Using conda:
-        '''
-
+        
+        ```
         conda env create -f environment.yml
         conda activate env
-        '''
+        ```
    - Using pip:
-        '''
 
+        ```
         python3 -m venv env
         source env/bin/activate
         pip install -r requirements.txt
-        '''
-3. Set up flask development server
-        '''
+        ```
 
-        export FLASK_APP=run.py
-        export FLASK_ENV=development
-        '''
+3. Set up flask development server
+    
+    ```
+    export FLASK_APP=run.py
+    export FLASK_ENV=development
+    ```
 
 ## Local Usage
+
 Follow this instruction whenever you want to run the web application on local computer (after installation)
+
 - For the application to run as expected, user must install all tools listed in the "tools" section. Please refer to the git repoistory linked in the description.
 1. Go to the cloned local directory
 2. Activate the virtual environment:
    - Using conda:
-        '''
 
+        ```
         conda activate env
-        '''
+        ```
    - Using pip:
-        '''
 
+        ```
         source env/bin/activate
-        '''
+        ```
 3. Use following command line to run Flask application:
-        '''
-        
-        flask run
-        '''
-4. Once ran, development server will be running on 'localhost:5000' in your default web browser
+
+    ```
+    flask run
+    ```
+
+4. Once ran, development server will be running on `localhost:5000` in your default web browser
 
 
 
@@ -55,10 +62,13 @@ Follow this instruction whenever you want to run the web application on local co
 
 **CONSULT:** Remove contamination by filtering extraneous reads
   - To install this tool in your local computer refer [here](https://github.com/noraracht/CONSULT).
+
 **RESPECT:** Given the cleaned  up reads, RESPECT will output the estimated genomic length of the species and the repeat spectrum.
   - To install this tool in your local computer refer [here](https://github.com/shahab-sarmashghi/RESPECT).
+
 **Skmer:** Estimate distances between genomes from low-coverage sequencing reads (genome-skims), without needing any assembly or alignment step
   - To install this tool in your local computer refer [here](https://github.com/shahab-sarmashghi/Skmer).
+  
 **APPLE:** Accurately phylogenetically place the reads into tree
   - *Not integrated into the website yet*
 **MISA:** Analyze mixed samples of multiple species that are hard to physically separate before sequencing
