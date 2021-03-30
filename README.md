@@ -71,6 +71,7 @@ Follow this instruction whenever you want to run the web application on local co
   
 **APPLE:** Accurately phylogenetically place the reads into tree
   - *Not integrated into the website yet*
+
 **MISA:** Analyze mixed samples of multiple species that are hard to physically separate before sequencing
   - *Not integrated into the website yet*
 
@@ -82,7 +83,7 @@ Follow this instruction whenever you want to run the web application on local co
       - Navigation Bar:
         - **Home:** Allows users to navigate back to the home page wherever they in the website (this is the default of the website)
         - **Flow Diagram:** Since there are more than one way for the users to use each tools, there is a basic flowchart that shows the users the basic pipeline of the tools. There are 4 different pipeline that the users can use on this website: 1. Processing of Individual Query and References 2. Distance Estimation 3. Indication of Query 4. Mixture of Analysis. The diagram shows the relationship between one pipeline to the other.
-        - **App:** This is a dropdown menu that allows user to navigate to any one of the tools that are described in the ["Tools"](# Tools) section. When any one of the options are selected, it navigates the users to a page that describes the function of the tool and allows the users to run each tools individually and separately from the pipeline.
+        - **App:** This is a dropdown menu that allows user to navigate to any one of the tools that are described in the ["Tools"](#Tools) section. When any one of the options are selected, it navigates the users to a page that describes the function of the tool and allows the users to run each tools individually and separately from the pipeline.
         - **Contact Us:** Navigates the users to the contact page. Users can contact the developers using this function.
       - Header: This has a basic description of the website also giving the user the option to know more about the website by referring them to a link that has a more indepth description of the project.
       - Choose your Pipeline: This section gives access to the tools from the very beginning. Pipeline 1, 2, 3, and 4 are buttons that navigate the users to the respective page that allows users to input their sample reads to run the set of tools that are needed to execute each of the pipeline. 
