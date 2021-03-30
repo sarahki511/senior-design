@@ -102,7 +102,7 @@ Follow this instruction whenever you want to run the web application on local co
 - Results Page:
     - The visualization is still in development
 - Contact Us page:
-    - ![Contact Us Page](https://github.com/sarahki511/senior-design/blob/master/app/static/image/conact_us.png)
+    - ![Contact Us Page](https://github.com/sarahki511/senior-design/blob/master/app/static/image/conatct_us.png)
         - Asks for user's Name, email address and Reason of Contact
         - When the email is sent to the user, the developers will receive an email of this form
 
