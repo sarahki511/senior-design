@@ -1,13 +1,12 @@
 from app import app
 import os, shutil
 import smtplib, ssl, certifi
+import subprocess, zipfile, re
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
 from flask import Flask, url_for, render_template
-# from email_validator import email_validator
-# use validate_email.updater import update_builtin_blacklist only if you want to update manually
-# from validate_email.updater import update_builtin_blacklist
+from email_validator import validate_email, EmailNotValidError
 
 def sendResults(timestamp, email, output_dir, result_dir):
     # get developer's email address and pwd

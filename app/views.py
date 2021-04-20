@@ -1,14 +1,14 @@
 from flask import Flask, redirect, url_for, render_template, request, send_from_directory, send_file
 from app import tools
 from werkzeug.utils import secure_filename
-import os, sys, shutil, zipfile, subprocess, re
+import os, sys, shutil, zipfile
+import subprocess
+import re
 from app import app
 from flask.helpers import flash
 from datetime import datetime
 import ssl
-from validate_email import validate_email
-# use validate_email.updater import update_builtin_blacklist only if you want to update manually
-# from validate_email.updater import update_builtin_blacklist
+from email_validator import validate_email, EmailNotValidError
 
 # home page -> render index.html
 @app.route("/") 
@@ -21,6 +21,14 @@ def home():
 def consult():
 	if request.method == 'POST':
 		# if file does not exist in request.files
+		email = request.form.get('userEmail')
+		try:
+			valid = validate_email(email, allow_smtputf8=False)
+			email = valid.ascii_email
+			print(email)
+		except EmailNotValidError as e:
+			flash('Your email does not exist. Try again', 'error')
+			return redirect(request.url)
 		if 'file' not in request.files:
 			print("is it here?")
 			flash('No file part')
@@ -50,8 +58,14 @@ def respect():
 	ext = "txt, csv, hist, fa, fq, fastq, fna, fasta"
 	if request.method == 'POST':
 		email = request.form.get('userEmail')
+		print(email)
 		# if the user email is valid and existing, warn and ask to submit again
-		if validate_email(email_address=email, check_regex=True, check_mx=True) == False:
+		# print(validate_email(email_address=email, check_format=True))
+		try:
+			valid = validate_email(email, allow_smtputf8=False)
+			email = valid.ascii_email
+			print(email)
+		except EmailNotValidError as e:
 			flash('Your email does not exist. Try again', 'error')
 			return redirect(request.url)
 		if 'folder' not in request.files:
@@ -93,7 +107,7 @@ def respect():
 				print(filename)
 			# if extension is not acceptable
 			else:
-				flash("Unacceptable extension. Only accept: {}".format(ext + " and .gz version"), 'warning')
+				flash("Unacceptable File Type. Only accept: {}".format(ext + " and .gz version"), 'warning')
 				tools.get_rid_of_folders(input_dir, output_dir)
 				return redirect(request.url)
 				
@@ -194,9 +208,12 @@ def skmer():
 	ext = "txt, csv, hist, fa, fq, fastq, fna, fasta"
 	if request.method == 'POST':
 		email = request.form.get('userEmail')
-		# if the user email is valid and existing, warn and ask to submit again
-		if validate_email(email_address=email, check_regex=True, check_mx=True) == False:
-			flash('Your email does not exist. Try again', 'warning')
+		try:
+			valid = validate_email(email, allow_smtputf8=False)
+			email = valid.ascii_email
+			print(email)
+		except EmailNotValidError as e:
+			flash('Your email does not exist. Try again', 'error')
 			return redirect(request.url)
 		if 'folder' not in request.files:
 			flash('No directory', 'error')
@@ -283,10 +300,6 @@ def apples():
 @app.route("/misa", methods=('GET', 'POST')) 
 def misa():
 	return render_template("misa.html", title = "MISA", id = "misa")
-
-@app.route("/pending", methods = ('GET', 'POST')) 
-def pending():
-	return render_template("pending.html", title = "PENDING", id = "pending")
 
 @app.route("/contact", methods=('GET', 'POST')) 
 def contact():
