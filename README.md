@@ -79,7 +79,7 @@ Follow this instruction whenever you want to run the web application on local co
 ### Home Page
 - When development server starts running, the home page looks like this:
   - ![Home Page 1](https://github.com/sarahki511/senior-design/blob/master/app/static/image/home_pg1.png)
-    - Fist Look of the home page includes:
+    - First Look of the home page includes:
       - Navigation Bar:
         - **Home:** Allows users to navigate back to the home page wherever they in the website (this is the default of the website)
         - **Flow Diagram:** Since there are more than one way for the users to use each tools, there is a basic flowchart that shows the users the basic pipeline of the tools. There are 4 different pipeline that the users can use on this website: 1. Processing of Individual Query and References 2. Distance Estimation 3. Indication of Query 4. Mixture of Analysis. The diagram shows the relationship between one pipeline to the other.
